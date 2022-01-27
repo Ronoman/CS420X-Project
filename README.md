@@ -6,4 +6,4 @@
 [Explanation](p1/writeup.md)
 
 # Assignment 2
-[Code](p2/p2.html)
+[Code](https://ronoman.github.io/CS420X-Project/p2/p2.html)
