@@ -1,6 +1,6 @@
 # Assignment 1
 [Video](https://youtu.be/ZFTjQLqsyzk)
 
-[Code](p1_shader.glsl)
+[Code](p1/shader.glsl)
 
-[Explanation](p1_writeup.md)
+[Explanation](p1/writeup.md)
