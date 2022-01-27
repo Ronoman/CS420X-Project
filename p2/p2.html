@@ -23,108 +23,100 @@
     #ifdef GL_ES
     precision mediump float;
     #endif
-    
-    uniform mediump float time;
-    uniform mediump vec2 resolution;
-    
+
+    uniform float time;
+    // contains resolution of our canvas, in pixels
+    uniform vec2 resolution;
+
+    // uniform pointing to our opengl texture
+    uniform sampler2D uSampler;
+
+    // TweakPane widget parameters
+    uniform int flip_x;
+    uniform int flip_y;
+    uniform float scale_x;
+    uniform float scale_y;
+    uniform float dr;
+    uniform float dg;
+    uniform float db;
+    uniform int enable_noise;
+    uniform int time_offset;
+    uniform float magnitude;
+
+    vec2 random2(vec2 st){
+        st = vec2( dot(st,vec2(127.1,311.7)),
+                  dot(st,vec2(269.5,183.3)) );
+        return -1.0 + 2.0*fract(sin(st)*43758.5453123);
+    }
+
+    // Gradient Noise by Inigo Quilez - iq/2013
+    // https://www.shadertoy.com/view/XdXGW8
+    float noise(vec2 st) {
+        vec2 i = floor(st);
+        vec2 f = fract(st);
+
+        vec2 u = f*f*(3.0-2.0*f);
+
+        return mix( mix( dot( random2(i + vec2(0.0,0.0) ), f - vec2(0.0,0.0) ),
+                        dot( random2(i + vec2(1.0,0.0) ), f - vec2(1.0,0.0) ), u.x),
+                    mix( dot( random2(i + vec2(0.0,1.0) ), f - vec2(0.0,1.0) ),
+                        dot( random2(i + vec2(1.0,1.0) ), f - vec2(1.0,1.0) ), u.x), u.y);
+    }
+
     void main() {
-      gl_FragColor = vec4( 
-        gl_FragCoord.x / resolution.x, 
-        gl_FragCoord.y / resolution.y, 
-        0.5*sin( time/100.)+0.5, 
-        1.0 
-      );
+      // gl_FragCoord is measured in pixels, but texture2D expects
+      // normalized coordinates (between 0–1). If we divide gl_FragCoord
+      // by our resolution, we'll get a normalized position value
+      vec2 pos = gl_FragCoord.xy / resolution;
+
+      if(flip_x == 1) {
+        pos.x = 1.0 - pos.x;
+      }
+
+      if(flip_y == 1) {
+        pos.y = 1.0 - pos.y;
+      }
+
+      if(scale_x != 0.0) {
+        pos.x *= scale_x;
+      }
+
+      if(scale_y != 0.0) {
+        pos.y *= scale_y;
+      }
+
+      // just get rgb from the texture to invert.
+      vec3 color = texture2D( uSampler, pos ).rgb;
+
+      if(enable_noise == 1) {
+        vec2 p = gl_FragCoord.xy;
+
+        if(time_offset == 1) {
+          p -= vec2(5.*time);
+        }
+
+        float m = magnitude;
+
+        if(magnitude == 0.) {
+          m = 1.;
+        }
+
+        float noise_amt = noise(32.*0.78*m*p);
+
+        noise_amt = 0.5 + 0.5*noise_amt;
+        noise_amt *= smoothstep(0.0, 0.005, gl_FragCoord.x);
+
+        color.rgb += vec3(noise_amt);
+      }
+
+      color.r += dr;
+      color.g += dg;
+      color.b += db;
+      
+      gl_FragColor = vec4(color, 1. );
     }
   </script>
 
-
-  <script type='text/javascript'>
-    // "global" variables
-    let gl, uTime
-
-    window.onload = function() {
-      const canvas = document.getElementById( 'gl' )
-      gl = canvas.getContext( 'webgl' )
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-
-      // define drawing area of canvas. bottom corner, width / height
-      gl.viewport( 0,0,gl.drawingBufferWidth, gl.drawingBufferHeight )
-
-      // create a buffer object to store vertices
-      const buffer = gl.createBuffer()
-
-      // point buffer at graphic context's ARRAY_BUFFER
-      gl.bindBuffer( gl.ARRAY_BUFFER, buffer )
-
-      const triangles = new Float32Array([
-        -1, -1,
-        1,  -1,
-        -1, 1,
-        -1, 1,
-        1, -1,
-        1, 1
-      ])
-
-      // initialize memory for buffer and populate it. Give
-      // open gl hint contents will not change dynamically.
-      gl.bufferData( gl.ARRAY_BUFFER, triangles, gl.STATIC_DRAW )
-
-      // create vertex shader
-      let shaderScript = document.getElementById('vertex')
-      let shaderSource = shaderScript.text
-      const vertexShader = gl.createShader( gl.VERTEX_SHADER )
-      gl.shaderSource( vertexShader, shaderSource );
-      gl.compileShader( vertexShader )
-
-      // create fragment shader
-      shaderScript = document.getElementById('fragment')
-      shaderSource = shaderScript.text
-      const fragmentShader = gl.createShader( gl.FRAGMENT_SHADER )
-      gl.shaderSource( fragmentShader, shaderSource );
-      gl.compileShader( fragmentShader )
-
-      // create shader program
-      const program = gl.createProgram()
-      gl.attachShader( program, vertexShader )
-      gl.attachShader( program, fragmentShader )
-      gl.linkProgram( program )
-      gl.useProgram( program )
-      
-      /* ALL ATTRIBUTE/UNIFORM INITIALIZATION MUST COME AFTER 
-      CREATING/LINKING/USING THE SHADER PROGAM */
-      
-      // find a pointer to the uniform "time" in our fragment shader
-      uTime = gl.getUniformLocation( program, 'time' ) 
-      const uRes = gl.getUniformLocation( program, 'resolution' )
-      gl.uniform2f( uRes, window.innerWidth, window.innerHeight )
-
-      // get position attribute location in shader
-      const position = gl.getAttribLocation( program, 'a_position' )
-      // enable the attribute
-      gl.enableVertexAttribArray( position )
-      // this will point to the vertices in the last bound array buffer.
-      // In this example, we only use one array buffer, where we're storing 
-      // our vertices
-      gl.vertexAttribPointer( position, 2, gl.FLOAT, false, 0,0 )
-      
-      render()
-    }
-
-    // keep track of time via incremental frame counter
-    let time = 0
-    function render() {
-      // schedules render to be called the next time the video card requests 
-      // a frame of video
-      window.requestAnimationFrame( render )
-      
-      // update time on CPU and GPU
-      time++
-      gl.uniform1f( uTime, time )
-
-      // draw triangles using the array buffer from index 0 to 6 (6 is count)
-      gl.drawArrays( gl.TRIANGLES, 0, 6 )
-    }
-  </script>
+  <script type='text/javascript' src="render.js"></script>
 
 </html>
