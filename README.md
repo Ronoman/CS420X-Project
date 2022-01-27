@@ -7,3 +7,7 @@
 
 # Assignment 2
 [Code](https://ronoman.github.io/CS420X-Project/p2/p2.html)
+
+[Explanation](p2/writeup.md)
+
+[Repo](p2/)
