@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang='en'>
+  <head>
+    <style>body{ margin:0 }</style>
+  </head>
+  <body>
+    <canvas id='gl'></canvas>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/tweakpane@3.0.7/dist/tweakpane.min.js"></script>
+
+  <!-- vertex shader, as simple as possible -->
+  <script id='vertex' type='x-shader/x-vertex'>
+    attribute vec2 a_position;
+
+    void main() {
+      gl_Position = vec4( a_position, 0., 1. );
+    }
+  </script>
+
+  <!-- fragment shader -->
+  <script id='fragment' type='x-shader/x-fragment'>
+    #ifdef GL_ES
+    precision mediump float;
+    #endif
+
+    uniform float time;
+    // contains resolution of our canvas, in pixels
+    uniform vec2 resolution;
+
+    // uniform pointing to our opengl texture
+    uniform sampler2D uSampler;
+
+    // TweakPane widget parameters
+    uniform int flip_x;
+    uniform int flip_y;
+    uniform float scale_x;
+    uniform float scale_y;
+    uniform float dr;
+    uniform float dg;
+    uniform float db;
+    uniform int enable_noise;
+    uniform int time_offset;
+    uniform float magnitude;
+
+    vec2 random2(vec2 st){
+        st = vec2( dot(st,vec2(127.1,311.7)),
+                  dot(st,vec2(269.5,183.3)) );
+        return -1.0 + 2.0*fract(sin(st)*43758.5453123);
+    }
+
+    // Gradient Noise by Inigo Quilez - iq/2013
+    // https://www.shadertoy.com/view/XdXGW8
+    float noise(vec2 st) {
+        vec2 i = floor(st);
+        vec2 f = fract(st);
+
+        vec2 u = f*f*(3.0-2.0*f);
+
+        return mix( mix( dot( random2(i + vec2(0.0,0.0) ), f - vec2(0.0,0.0) ),
+                        dot( random2(i + vec2(1.0,0.0) ), f - vec2(1.0,0.0) ), u.x),
+                    mix( dot( random2(i + vec2(0.0,1.0) ), f - vec2(0.0,1.0) ),
+                        dot( random2(i + vec2(1.0,1.0) ), f - vec2(1.0,1.0) ), u.x), u.y);
+    }
+
+    void main() {
+      // gl_FragCoord is measured in pixels, but texture2D expects
+      // normalized coordinates (between 0–1). If we divide gl_FragCoord
+      // by our resolution, we'll get a normalized position value
+      vec2 pos = gl_FragCoord.xy / resolution;
+
+      if(flip_x == 1) {
+        pos.x = 1.0 - pos.x;
+      }
+
+      if(flip_y == 1) {
+        pos.y = 1.0 - pos.y;
+      }
+
+      if(scale_x != 0.0) {
+        pos.x *= scale_x;
+      }
+
+      if(scale_y != 0.0) {
+        pos.y *= scale_y;
+      }
+
+      // just get rgb from the texture to invert.
+      vec3 color = texture2D( uSampler, pos ).rgb;
+
+      if(enable_noise == 1) {
+        vec2 p = gl_FragCoord.xy;
+
+        if(time_offset == 1) {
+          p -= vec2(5.*time);
+        }
+
+        float m = magnitude;
+
+        if(magnitude == 0.) {
+          m = 1.;
+        }
+
+        float noise_amt = noise(32.*0.78*m*p);
+
+        noise_amt = 0.5 + 0.5*noise_amt;
+        noise_amt *= smoothstep(0.0, 0.005, gl_FragCoord.x);
+
+        color.rgb += vec3(noise_amt);
+      }
+
+      color.r += dr;
+      color.g += dg;
+      color.b += db;
+      
+      gl_FragColor = vec4(color, 1. );
+    }
+  </script>
+
+  <script id='feedback' type='x-shader/x-fragment'>
+    #ifdef GL_ES
+    precision mediump float;
+    #endif
+  
+    uniform float time;
+    uniform float feedbackAmount;
+    uniform vec2  resolution;
+    
+    // for our live video feed
+    uniform sampler2D videoTexture;
+    // get access to the last frame of video
+    uniform sampler2D feedbackTexture;
+  
+    void main() {
+      vec2 pos = gl_FragCoord.xy / resolution;
+      vec3 video = texture2D( videoTexture, pos ).rgb;
+      vec3 prior = texture2D( feedbackTexture, pos ).rgb;
+      
+      // our final output is a combination of the live video signal
+      // and our feedback
+      gl_FragColor = vec4( (video * .05 + prior * feedbackAmount), 1. );
+    }
+  </script>
+
+  <script type='text/javascript' src="render.js"></script>
+
+</html>
