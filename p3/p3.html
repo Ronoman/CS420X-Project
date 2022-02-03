@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang='en'>
+  <head>
+    <style>body{ margin:0; background:black; }</style>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <canvas id='gl'></canvas>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/tweakpane@3.0.7/dist/tweakpane.min.js"></script>
+
+  <!-- vertex shader, as simple as possible -->
+  <script id='vertex' type='x-shader/x-vertex'>
+    attribute vec2 a_position;
+
+    void main() {
+      gl_Position = vec4( a_position, 0, 1 );
+    }
+  </script>
+  
+  <!-- game of life simulation fragment shader -->
+  <script id='simulation' type='x-shader/x-fragment'>
+    #ifdef GL_ES
+    precision mediump float;
+    #endif
+
+    uniform float time;
+    uniform vec2 resolution;
+
+    // simulation texture state, swapped each frame
+    uniform sampler2D state;
+
+    uniform float DA;
+    uniform float DB;
+    uniform float f;
+    uniform float k;
+
+    uniform int pause;
+
+    // look up individual cell values 
+    vec3 get(int x, int y) {
+      return texture2D( state, ( gl_FragCoord.xy + vec2(x, y) ) / resolution ).rgb;
+    }
+
+    void main() {
+      if(pause == 0) {
+        float A = get(0, 0).r;
+        float B = get(0, 0).g;
+
+        float gradA = -1.   * get( 0,  0).r + 
+                      0.2   * get( 1,  0).r +
+                      0.2   * get(-1,  0).r + 
+                      0.2   * get( 0,  1).r + 
+                      0.2   * get( 0, -1).r +
+                      0.05  * get(-1, -1).r +
+                      0.05  * get(-1,  1).r +
+                      0.05  * get( 1, -1).r +
+                      0.05  * get( 1,  1).r;
+
+        // Is this needed? Gradient is squared on https://karlsims.com/rd.html
+        gradA = pow(gradA, 2.);
+
+        float gradB = -1.   * get( 0,  0).g + 
+                      0.2   * get( 1,  0).g +
+                      0.2   * get(-1,  0).g + 
+                      0.2   * get( 0,  1).g + 
+                      0.2   * get( 0, -1).g +
+                      0.05  * get(-1, -1).g +
+                      0.05  * get(-1,  1).g +
+                      0.05  * get( 1, -1).g +
+                      0.05  * get( 1,  1).g;
+
+        gradB = pow(gradB, 2.);
+
+        // A' = A + (DA * grad**2*A - A(B**2) + f*(1-A)) * dt
+        // B' = B + (DB * grad**2*B - A(B**2) - (k+f)*B) * dt
+        float newA = A + (DA*gradA - A*pow(B, 2.) + f*(1.-A));
+        float newB = B + (DB*gradB + A*pow(B, 2.) - (k+f)*B);
+
+        gl_FragColor = vec4(newA, newB, 0.0, 1.0);
+      } else {
+        gl_FragColor = vec4(get(0, 0), 1.);
+      }
+    }
+  </script>
+
+  <!-- render to screen shader -->
+  <script id='render' type='x-shader/x-fragment'>
+    #ifdef GL_ES
+    precision mediump float;
+    #endif
+
+    uniform sampler2D uSampler;
+    uniform vec2 resolution;
+
+    void main() {
+      vec2 simState = texture2D( uSampler, gl_FragCoord.xy / resolution ).rg;
+
+      float mixAmt = simState.r / (simState.r + simState.g);
+
+      float color = mix(0.0, 1.0, mixAmt);
+
+      gl_FragColor = vec4(vec3(color), 1.);
+    }
+  </script>
+
+  <script type='text/javascript' src="render.js"></script>
+</html>
