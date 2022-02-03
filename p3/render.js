@@ -12,10 +12,30 @@ function poke( x, y, value, texture ) {
         gl.TEXTURE_2D, 0, 
         // x offset, y offset, width, height
         x, y, 1, 1,
-        gl.RGBA, gl.UNSIGNED_BYTE,
+        gl.RGBA, gl.FLOAT,
         // is supposed to be a typed array
         new Uint8Array([ value[0], value[1], value[2], 255 ])
     )
+}
+
+// https://stackoverflow.com/a/59211338/1730405
+function drawCircleToTex(radius, offsetX, offsetY, tex)
+{
+  gl.bindTexture(gl.TEXTURE_2D, tex);
+
+  largestX = radius;
+  radiusSquared = Math.pow(radius, 2);
+  for(let x = -radius; x < radius; x++)
+  {
+    let hh = Math.sqrt(radiusSquared - Math.pow(x, 2));
+    let rx = offsetX + x;
+    let ph = offsetY + hh;
+
+    for(let y = offsetY - hh; y < ph; y++)
+    {
+      poke(rx, y, [255, 255, 0]);
+    }
+  }
 }
 
 function setInitialState() {
@@ -30,8 +50,8 @@ function setInitialState() {
   // Suggested starting parameters from https://karlsims.com/rd.html
   gl.uniform1f(uDA, 1.0);
   gl.uniform1f(uDB, 0.5);
-  gl.uniform1f(uF, 0.055);
-  gl.uniform1f(uK, 0.052);
+  gl.uniform1f(uF, 0.0367);
+  gl.uniform1f(uK, 0.0649);
 
   gl.bindTexture(gl.TEXTURE_2D, textureBack)
   for( i = 0; i < dimensions.width; i++ ) {
@@ -42,26 +62,27 @@ function setInitialState() {
   }
 
   // Size of the area to add chemical B to. Centered on the screen
-  const B_WIDTH = 100;
+  const B_WIDTH = 200;
   const B_HEIGHT = 100;
 
   let startX = parseInt(dimensions.width/2 - B_WIDTH/2);
   let startY = parseInt(dimensions.height/2 - B_HEIGHT/2);
 
   // TODO: Maybe change poke() to take in these ranges, since texSubImage2D takes width and height
-  for(i = startX; i < startX + B_WIDTH; i++) {
-    for(j = startY; j < startY + B_HEIGHT; j++) {
-      if(Math.random() > 0.75)
-        poke( i, j, [255, 255, 0], textureBack )
+  for(i = 0; i < dimensions.width; i++) {
+    for(j = 0; j < dimensions.height; j++) {
+      poke( i, j, [255, 0, 0], textureBack )
     }
   }
 
-  for(i = startX + 200; i < startX + B_WIDTH + 200; i++) {
-    for(j = startY + 200; j < startY + B_HEIGHT + 200; j++) {
-      if(Math.random() > 0.75)
-        poke( i, j, [255, 255, 0], textureBack )
-    }
-  }
+  // for(i = startX; i < startX + B_WIDTH; i++) {
+  //   for(j = startY; j < startY + B_HEIGHT; j++) {
+  //     poke( i, j, [0, 255, 0], textureBack )
+  //   }
+  // }
+
+  drawCircleToTex(30, -20 + dimensions.width/2, dimensions.height/2, textureBack);
+  drawCircleToTex(30, 20 + dimensions.width/2,  dimensions.height/2, textureBack);
 }
 
 function initWidgets() {
@@ -70,8 +91,8 @@ function initWidgets() {
   const PARAMS = {
     "Da": 1.0,
     "Db": 0.5,
-    "f": 0.055,
-    "k": 0.062,
+    "f": 0.0367,
+    "k": 0.0649,
     "Mode": '',
     "Paused": false
   }
@@ -289,7 +310,7 @@ function makeTextures() {
   
   console.log("texImage2D call on textureBack")
   // specify texture format, see https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/texImage2D
-  gl.texImage2D( gl.TEXTURE_2D, 0, gl.RGBA, dimensions.width, dimensions.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null )
+  gl.texImage2D( gl.TEXTURE_2D, 0, gl.RGBA, dimensions.width, dimensions.height, 0, gl.RGBA, gl.FLOAT, null )
 
   textureFront = gl.createTexture()
   gl.bindTexture( gl.TEXTURE_2D, textureFront )
@@ -297,7 +318,7 @@ function makeTextures() {
   gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE )
   gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST )
   gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST )
-  gl.texImage2D( gl.TEXTURE_2D, 0, gl.RGBA, dimensions.width, dimensions.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null )
+  gl.texImage2D( gl.TEXTURE_2D, 0, gl.RGBA, dimensions.width, dimensions.height, 0, gl.RGBA, gl.FLOAT, null )
 
   // Create a framebuffer and attach the texture.
   framebuffer = gl.createFramebuffer()
