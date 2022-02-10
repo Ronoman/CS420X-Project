@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang='en'>
+  <head>
+    <style>body{ margin:0; background: black; }</style>
+  </head>
+  <body>
+    <canvas id='gl'></canvas>
+  </body>
+
+  <script id='copyVertex' type='x-shader/x-vertex'>#version 300 es
+    in vec2 a_pos;
+
+    void main() {
+      gl_Position = vec4( a_pos, 0, 1 );
+    }
+  </script>
+
+  <!-- render to screen shader -->
+  <script id='copyFragment' type='x-shader/x-fragment'>#version 300 es
+    #ifdef GL_ES
+    precision mediump float;
+
+    #endif
+
+    uniform sampler2D uSampler;
+    uniform vec2 resolution;
+
+    out vec4 color;
+    void main() {
+      vec2 pos = gl_FragCoord.xy / resolution;
+      vec4 tex = texture( uSampler, pos );
+      color = vec4( tex.rgb, 1. );
+    }
+  </script>
+
+  <script id='simulationVertex' type='x-shader/x-vertex'>#version 300 es
+    #define PI_4 3.1415926538/16.
+    precision mediump float;
+
+    // input from our feedback TRANSFORM_FEEDBACK
+    in vec4 a_pos;
+
+    uniform vec2 resolution;
+
+    // our chemical layer
+    uniform sampler2D uSampler;
+
+    // the output of our feedback transform
+    // xy will store our position
+    // zw wiil store our heading / direction
+    out vec4 o_vpos;
+
+    // this function accepts a direction (header) for a
+    // agent and a rotation in radians, returning the
+    // new, rotated direction
+    vec2 rotate(vec2 dir, float angle) {
+      float  s = sin( angle );
+      float  c = cos( angle );
+      mat2   m = mat2( c, -s, s, c );
+      return m * dir;
+    }
+
+    // pos - position of agent
+    // dir - heading of agent
+    // angle - direction to sense, in radians
+    // distance - distance to sense
+    float readSensor( vec2 pos, vec2 dir, float angle, vec2 distance ) {
+      vec2 newangle  = rotate( dir, angle  );
+      vec2 offset = newangle * distance;
+      return texture( uSampler, pos + offset ).r;
+    } 
+
+    void main() {
+      // get normalied height / width of a single pixel 
+      vec2 pixel = 1. / resolution;
+
+      // how far ahead should sensing occur? this is fun to play with
+      vec2 sensorDistance = pixel * 3.;
+
+      // normalize our {-1,1} vertex coordinates to {0,1} for texture lookups
+      vec2 pos = (1. + a_pos.xy) / 2.;
+
+      // read sensor informatino at different angles
+      float left     = readSensor( pos, a_pos.zw, -PI_4, sensorDistance );
+      float forward  = readSensor( pos, a_pos.zw, 0.,    sensorDistance );
+      float right    = readSensor( pos, a_pos.zw, PI_4,  sensorDistance );
+      
+      // initialize feedback transform output
+      o_vpos = a_pos;
+
+      left = left;
+
+      // if most chemical is found to left... 
+      if( left > forward && left > right ) {
+        // rotate left and store in .zw
+        o_vpos.zw = rotate( o_vpos.zw, -PI_4 );
+      }else if( right > left && right > forward ) { // chemical is to the right
+        o_vpos.zw = rotate( o_vpos.zw, PI_4 );
+      }else if ( right == left ) { // randomly pick a direction
+        float rand = fract(sin(a_pos.x)*100000.0);
+        if( rand > .5 ) {
+          o_vpos.zw = rotate( o_vpos.zw, PI_4 );
+        }else{
+          o_vpos.zw = rotate( o_vpos.zw, -PI_4 );
+        }
+      } // else keep going the same direction, no change required
+      
+      // move our agent in our new direction by one pixel
+      o_vpos.xy += o_vpos.zw * pixel;
+      
+      gl_PointSize = 1.;
+
+      // position is for fragment shader rendering, don't need to include heading
+      gl_Position = vec4( a_pos.x, a_pos.y, 0., 1. );
+    }
+  </script>
+
+  <script id='simulationFragment' type='x-shader/x-fragment'>#version 300 es
+    precision mediump float;
+    
+    out vec4 o_frag;
+    void main() {
+      o_frag = vec4( 1., 0., 1., .25 );
+    }
+  </script>
+
+  <script id='ddFragment' type='x-shader/x-fragment'>#version 300 es
+    #ifdef GL_ES
+    precision mediump float;
+    #endif  
+    
+    uniform sampler2D uSampler;
+    uniform vec2 resolution;
+    
+    float get(int x, int y) {
+      return texture( uSampler, ( gl_FragCoord.xy + vec2(x, y) ) / resolution ).r;
+    }
+    
+    out vec4 color;
+    void main() {
+      float sum = get(0,0) * -1.;
+      sum += get(-1,0)  *  .2;
+      sum += get(-1,-1) *  .05;
+      sum += get(0,-1)  *  .2;
+      sum += get(1,-1)  *  .05;       
+      sum += get(1,0)   *  .2;
+      sum += get(1,1)   *  .05;
+      sum += get(0,1)   *  .2;
+      sum += get(-1,1)  *  .05;
+    
+      vec2 pos = gl_FragCoord.xy / resolution;
+      vec4 tex = texture( uSampler, pos );
+      color = vec4(vec3(sum * 0.9), .25 );
+    }
+    </script>
+
+  <script type='text/javascript' src="render.js"></script>
+
+</html>
