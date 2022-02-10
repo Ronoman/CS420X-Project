@@ -6,8 +6,15 @@
 [Explanation](p1/writeup.md)
 
 # Assignment 2
-[Code](https://ronoman.github.io/CS420X-Project/p2/p2.html)
+[Project](https://ronoman.github.io/CS420X-Project/p2/p2.html)
+
+[Repo](p2/)
 
 [Explanation](p2/writeup.md)
 
-[Repo](p2/)
+# Assignment 3
+[Project](https://ronoman.github.io/CS420X-Project/p3/p3.html)
+
+[Repo](p3/)
+
+[Explanation](p3/writeup.md)
