@@ -4,7 +4,7 @@ let gl, uTime, uRes, transformFeedback,
     textureBack, textureFront, framebuffer,
     copyProgram, simulationProgram, quad,
     dimensions = { width:null, height:null },
-    agentCount = 2500000
+    agentCount = 750000
 
 window.onload = function() {
   const canvas = document.getElementById( 'gl' )
