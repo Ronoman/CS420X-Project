@@ -18,3 +18,8 @@
 [Repo](p3/)
 
 [Explanation](p3/writeup.md)
+
+# Assignment 4
+[Project](https://ronoman.github.io/CS420X-Project/p4/p4.html)
+
+[Repo](p4/)
