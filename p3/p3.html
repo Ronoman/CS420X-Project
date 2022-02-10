@@ -37,6 +37,7 @@
     uniform float k;
 
     uniform int pause;
+    uniform int varying_kill;
 
     // look up individual cell values 
     vec3 get(int x, int y) {
@@ -58,9 +59,6 @@
                       0.05  * get( 1, -1).r +
                       0.05  * get( 1,  1).r;
 
-        // Is this needed? Gradient is squared on https://karlsims.com/rd.html
-        gradA = pow(gradA, 2.);
-
         float gradB = -1.   * get( 0,  0).g + 
                       0.2   * get( 1,  0).g +
                       0.2   * get(-1,  0).g + 
@@ -71,12 +69,21 @@
                       0.05  * get( 1, -1).g +
                       0.05  * get( 1,  1).g;
 
-        gradB = pow(gradB, 2.);
+        if(varying_kill == 1) {
+          // Scaling factor between 0 and 1
+          float scale_factor = float(gl_FragCoord.x + 1) / 2.0;
 
-        // A' = A + (DA * grad**2*A - A(B**2) + f*(1-A)) * dt
-        // B' = B + (DB * grad**2*B - A(B**2) - (k+f)*B) * dt
+          float k_low = 0.0;
+          float k_high = 0.0;
+
+          k = mix(k_low, k_high, scale_factor);
+        }
+        
         float newA = A + (DA*gradA - A*pow(B, 2.) + f*(1.-A));
         float newB = B + (DB*gradB + A*pow(B, 2.) - (k+f)*B);
+
+        newA = min(newA, 1.0);
+        newB = min(newB, 1.0);
 
         gl_FragColor = vec4(newA, newB, 0.0, 1.0);
       } else {

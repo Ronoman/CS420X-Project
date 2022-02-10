@@ -14,7 +14,7 @@ function poke( x, y, value, texture ) {
         x, y, 1, 1,
         gl.RGBA, gl.FLOAT,
         // is supposed to be a typed array
-        new Uint8Array([ value[0], value[1], value[2], 255 ])
+        new Float32Array([ value[0]/255, value[1]/255, value[2]/255, 1 ])
     )
 }
 
@@ -50,8 +50,8 @@ function setInitialState() {
   // Suggested starting parameters from https://karlsims.com/rd.html
   gl.uniform1f(uDA, 1.0);
   gl.uniform1f(uDB, 0.5);
-  gl.uniform1f(uF, 0.0367);
-  gl.uniform1f(uK, 0.0649);
+  gl.uniform1f(uF, 0.055);
+  gl.uniform1f(uK, 0.062);
 
   gl.bindTexture(gl.TEXTURE_2D, textureBack)
   for( i = 0; i < dimensions.width; i++ ) {
@@ -69,30 +69,30 @@ function setInitialState() {
   let startY = parseInt(dimensions.height/2 - B_HEIGHT/2);
 
   // TODO: Maybe change poke() to take in these ranges, since texSubImage2D takes width and height
-  for(i = 0; i < dimensions.width; i++) {
-    for(j = 0; j < dimensions.height; j++) {
-      poke( i, j, [255, 0, 0], textureBack )
-    }
-  }
-
-  // for(i = startX; i < startX + B_WIDTH; i++) {
-  //   for(j = startY; j < startY + B_HEIGHT; j++) {
-  //     poke( i, j, [0, 255, 0], textureBack )
+  // for(i = 0; i < dimensions.width; i++) {
+  //   for(j = 0; j < dimensions.height; j++) {
+  //     poke( i, j, [255, 0, 0], textureBack )
   //   }
   // }
 
-  drawCircleToTex(30, -20 + dimensions.width/2, dimensions.height/2, textureBack);
-  drawCircleToTex(30, 20 + dimensions.width/2,  dimensions.height/2, textureBack);
+  for(i = startX; i < startX + B_WIDTH; i++) {
+    for(j = startY; j < startY + B_HEIGHT; j++) {
+      poke( i, j, [255, 255, 0], textureBack )
+    }
+  }
+
+  // drawCircleToTex(30, -20 + dimensions.width/2, dimensions.height/2, textureBack);
+  // drawCircleToTex(30, 20 + dimensions.width/2,  dimensions.height/2, textureBack);
 }
 
 function initWidgets() {
-  const pane = new Tweakpane.Pane({title: "Photobooth"})
+  const pane = new Tweakpane.Pane({title: "Reaction Diffusion Simulation"})
 
   const PARAMS = {
     "Da": 1.0,
     "Db": 0.5,
-    "f": 0.0367,
-    "k": 0.0649,
+    "f": 0.055,
+    "k": 0.062,
     "Mode": '',
     "Paused": false
   }
@@ -178,7 +178,7 @@ function initWidgets() {
 
 window.onload = function() {
   const canvas = document.getElementById( 'gl' )
-  gl = canvas.getContext( 'webgl' )
+  gl = canvas.getContext( 'webgl2' )
   canvas.width = dimensions.width = window.innerWidth
   canvas.height = dimensions.height = window.innerHeight
 
@@ -295,6 +295,8 @@ function makeShaders() {
 }
 
 function makeTextures() {
+  gl.getExtension("EXT_color_buffer_float")
+
   textureBack = gl.createTexture()
   gl.bindTexture( gl.TEXTURE_2D, textureBack )
   
@@ -310,7 +312,7 @@ function makeTextures() {
   
   console.log("texImage2D call on textureBack")
   // specify texture format, see https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/texImage2D
-  gl.texImage2D( gl.TEXTURE_2D, 0, gl.RGBA, dimensions.width, dimensions.height, 0, gl.RGBA, gl.FLOAT, null )
+  gl.texImage2D( gl.TEXTURE_2D, 0, gl.RGBA32F, dimensions.width, dimensions.height, 0, gl.RGBA, gl.FLOAT, null )
 
   textureFront = gl.createTexture()
   gl.bindTexture( gl.TEXTURE_2D, textureFront )
@@ -318,7 +320,7 @@ function makeTextures() {
   gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE )
   gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST )
   gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST )
-  gl.texImage2D( gl.TEXTURE_2D, 0, gl.RGBA, dimensions.width, dimensions.height, 0, gl.RGBA, gl.FLOAT, null )
+  gl.texImage2D( gl.TEXTURE_2D, 0, gl.RGBA32F, dimensions.width, dimensions.height, 0, gl.RGBA, gl.FLOAT, null )
 
   // Create a framebuffer and attach the texture.
   framebuffer = gl.createFramebuffer()
