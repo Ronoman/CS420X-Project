@@ -69,18 +69,20 @@
                       0.05  * get( 1, -1).g +
                       0.05  * get( 1,  1).g;
 
+        float kill_rate = k;
+
         if(varying_kill == 1) {
           // Scaling factor between 0 and 1
-          float scale_factor = float(gl_FragCoord.x + 1) / 2.0;
+          float scale_factor = (gl_FragCoord.x / resolution.x);
 
-          float k_low = 0.0;
-          float k_high = 0.0;
+          float k_low = k + 0.005;
+          float k_high = k - 0.005;
 
-          k = mix(k_low, k_high, scale_factor);
+          kill_rate = mix(k_low, k_high, scale_factor);
         }
         
         float newA = A + (DA*gradA - A*pow(B, 2.) + f*(1.-A));
-        float newB = B + (DB*gradB + A*pow(B, 2.) - (k+f)*B);
+        float newB = B + (DB*gradB + A*pow(B, 2.) - (kill_rate+f)*B);
 
         newA = min(newA, 1.0);
         newB = min(newB, 1.0);

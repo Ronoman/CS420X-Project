@@ -47,11 +47,17 @@ function setInitialState() {
   uF  = gl.getUniformLocation(simulationProgram, "f");
   uK  = gl.getUniformLocation(simulationProgram, "k");
 
+  uPause = gl.getUniformLocation(simulationProgram, "pause");
+  uVaryingKill = gl.getUniformLocation(simulationProgram, "varying_kill");
+
   // Suggested starting parameters from https://karlsims.com/rd.html
   gl.uniform1f(uDA, 1.0);
   gl.uniform1f(uDB, 0.5);
   gl.uniform1f(uF, 0.055);
   gl.uniform1f(uK, 0.062);
+
+  gl.uniform1i(uPause, 0);
+  gl.uniform1i(uVaryingKill, true);
 
   gl.bindTexture(gl.TEXTURE_2D, textureBack)
   for( i = 0; i < dimensions.width; i++ ) {
@@ -93,7 +99,7 @@ function initWidgets() {
     "Db": 0.5,
     "f": 0.055,
     "k": 0.062,
-    "Mode": '',
+    "Variable kill rate": true,
     "Paused": false
   }
 
@@ -136,28 +142,15 @@ function initWidgets() {
   });
   
   simOptions = pane.addFolder({title: "Simulation Options"})
-  simOptions.addInput(PARAMS, 'Paused', {
-    min: 0.01,
-    max: 1.0,
-    step: 0.01
-  }).on('change', (ev) => {
+  simOptions.addInput(PARAMS, 'Paused').on('change', (ev) => {
     gl.useProgram(simulationProgram)
     let loc = gl.getUniformLocation(simulationProgram, "pause");
     gl.uniform1i(loc, ev.value)
   });
-  simOptions.addInput(PARAMS, 'Mode', {
-    options: {
-      normal: "Normal",
-      skew_kill: "Skew kill rate"
-    }
-  }).on('change', (ev) => {
+  simOptions.addInput(PARAMS, 'Variable kill rate').on('change', (ev) => {
     gl.useProgram(simulationProgram)
-
-    // Pause sim
-    let loc = gl.getUniformLocation(simulationProgram, "pause");
+    let loc = gl.getUniformLocation(simulationProgram, "varying_kill");
     gl.uniform1i(loc, ev.value)
-
-    // Reset sim
   })
   simOptions.addButton({
     title: "Reset"
