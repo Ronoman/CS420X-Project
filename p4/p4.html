@@ -79,11 +79,13 @@
     void main() {
       float rot = PI / float(n);
 
+      rot = rot;
+
       // get normalied height / width of a single pixel 
       vec2 pixel = 1. / resolution;
 
       // how far ahead should sensing occur? this is fun to play with
-      vec2 sensorDistance = pixel * float(sensor_dist);
+      vec2 sensorDistance = pixel * float(sensor_dist) * cos(a_pos.y) * cos(a_pos.x);
 
       // normalize our {-1,1} vertex coordinates to {0,1} for texture lookups
       vec2 pos = (1. + a_pos.xy) / 2.;
@@ -115,20 +117,34 @@
       
       // move our agent in our new direction by one pixel
       o_vpos.xy += o_vpos.zw * pixel;
+
+      if(o_vpos.x < -1.) {
+        o_vpos.x = resolution.x - o_vpos.x;
+      } else if(o_vpos.x > 1.) {
+        o_vpos.x = mod(o_vpos.x, resolution.x);
+      }
+
+      if(o_vpos.y < -1.) {
+        o_vpos.y = resolution.y - o_vpos.y;
+      } else if(o_vpos.y > 1.) {
+        o_vpos.y = mod(o_vpos.y, resolution.y);
+      }
       
       gl_PointSize = 1.;
 
       // position is for fragment shader rendering, don't need to include heading
-      gl_Position = vec4( a_pos.x, a_pos.y, 0., 1. );
+      gl_Position = vec4( o_vpos.x, o_vpos.y, 0., 1. );
     }
   </script>
 
   <script id='simulationFragment' type='x-shader/x-fragment'>#version 300 es
     precision mediump float;
+
+    uniform vec3 color;
     
     out vec4 o_frag;
     void main() {
-      o_frag = vec4( 1., 0., 1., .25 );
+      o_frag = vec4(color, .25 );
     }
   </script>
 
@@ -139,6 +155,9 @@
     
     uniform sampler2D uSampler;
     uniform vec2 resolution;
+
+    // Tweakpane params
+    uniform float decay;
     
     float get(int x, int y) {
       return texture( uSampler, ( gl_FragCoord.xy + vec2(x, y) ) / resolution ).r;
@@ -150,15 +169,17 @@
       sum += get(-1,0)  *  .2;
       sum += get(-1,-1) *  .05;
       sum += get(0,-1)  *  .2;
-      sum += get(1,-1)  *  .05;       
+      sum += get(1,-1)  *  .05;
       sum += get(1,0)   *  .2;
       sum += get(1,1)   *  .05;
       sum += get(0,1)   *  .2;
       sum += get(-1,1)  *  .05;
+
+      // sum *= decay;
     
       vec2 pos = gl_FragCoord.xy / resolution;
       vec4 tex = texture( uSampler, pos );
-      color = vec4(vec3(sum * 0.9), .25 );
+      color = vec4(vec3(sum * 0.9 * decay), .25 );
     }
     </script>
 

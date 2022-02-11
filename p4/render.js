@@ -1,10 +1,11 @@
+let agentCount = 5000000
+
 // "global" variables
 let gl, uTime, uRes, transformFeedback, 
     buffer1, buffer2, simulationPosition, copyPosition,
     textureBack, textureFront, framebuffer,
     copyProgram, simulationProgram, quad,
-    dimensions = { width:null, height:null },
-    agentCount = 750000
+    dimensions = { width:null, height:null }
 
 window.onload = function() {
   const canvas = document.getElementById( 'gl' )
@@ -173,6 +174,9 @@ function makeSimulationUniforms() {
 
   let uSensorDist = gl.getUniformLocation(simulationProgram, "sensor_dist");
   gl.uniform1i(uSensorDist, 4);
+
+  let uColor = gl.getUniformLocation(simulationProgram, "color");
+  gl.uniform3fv(uColor, [1.0, 0.0, 0.75]);
 }
 
 function makeDecayDiffusePhase() {
@@ -252,7 +256,9 @@ function makeControls() {
 
   const PARAMS = {
     "Sensor distance": 3,
-    "Turn amount": 4
+    "Turn amount": 4,
+    "Diffuse scale": 1.0,
+    "Color": {r: 255, g: 0, b: 255}
   }
 
   simParams = pane.addFolder({title: "Simulation Parameters"})
@@ -274,6 +280,20 @@ function makeControls() {
     let loc = gl.getUniformLocation(simulationProgram, "n");
     gl.uniform1i(loc, ev.value)
   });
+  simParams.addInput(PARAMS, "Diffuse scale", {
+    min: 0.01,
+    max: 2.0,
+    step: 0.01
+  }).on('change', (ev) => {
+    gl.useProgram(ddProgram);
+    let loc = gl.getUniformLocation(ddProgram, "decay");
+    gl.uniform1f(loc, ev.value);
+  })
+  simParams.addInput(PARAMS, "Color").on('change', (ev) => {
+    gl.useProgram(simulationProgram)
+    let loc = gl.getUniformLocation(simulationProgram, "color");
+    gl.uniform3fv(loc, [ev.value.r/255, ev.value.g/255, ev.value.b/255])
+  })
 }
 
 function render() {
@@ -292,7 +312,7 @@ function render() {
   // read from textureBack in our shaders
   gl.bindTexture( gl.TEXTURE_2D, textureBack )
 
-  // bind our array buffer of vants
+  // bind our array buffer of molds
   gl.bindBuffer( gl.ARRAY_BUFFER, buffer1 )
   gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 0,0 )
   gl.bindBufferBase( gl.TRANSFORM_FEEDBACK_BUFFER, 0, buffer2 )
