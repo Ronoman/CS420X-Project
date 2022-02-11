@@ -7,6 +7,8 @@
     <canvas id='gl'></canvas>
   </body>
 
+  <script src="https://cdn.jsdelivr.net/npm/tweakpane@3.0.7/dist/tweakpane.min.js"></script>
+
   <script id='copyVertex' type='x-shader/x-vertex'>#version 300 es
     in vec2 a_pos;
 
@@ -34,13 +36,17 @@
   </script>
 
   <script id='simulationVertex' type='x-shader/x-vertex'>#version 300 es
-    #define PI_4 3.1415926538/4.
+    #define PI 3.1415926538
     precision mediump float;
 
     // input from our feedback TRANSFORM_FEEDBACK
     in vec4 a_pos;
 
     uniform vec2 resolution;
+    
+    // Params from TweakPane
+    uniform int n;
+    uniform int sensor_dist;
 
     // our chemical layer
     uniform sampler2D uSampler;
@@ -71,19 +77,21 @@
     } 
 
     void main() {
+      float rot = PI / float(n);
+
       // get normalied height / width of a single pixel 
       vec2 pixel = 1. / resolution;
 
       // how far ahead should sensing occur? this is fun to play with
-      vec2 sensorDistance = pixel * 3.;
+      vec2 sensorDistance = pixel * float(sensor_dist);
 
       // normalize our {-1,1} vertex coordinates to {0,1} for texture lookups
       vec2 pos = (1. + a_pos.xy) / 2.;
 
       // read sensor informatino at different angles
-      float left     = readSensor( pos, a_pos.zw, -PI_4, sensorDistance );
+      float left     = readSensor( pos, a_pos.zw, -rot, sensorDistance );
       float forward  = readSensor( pos, a_pos.zw, 0.,    sensorDistance );
-      float right    = readSensor( pos, a_pos.zw, PI_4,  sensorDistance );
+      float right    = readSensor( pos, a_pos.zw, rot,  sensorDistance );
       
       // initialize feedback transform output
       o_vpos = a_pos;
@@ -93,15 +101,15 @@
       // if most chemical is found to left... 
       if( left > forward && left > right ) {
         // rotate left and store in .zw
-        o_vpos.zw = rotate( o_vpos.zw, -PI_4 );
+        o_vpos.zw = rotate( o_vpos.zw, -rot );
       }else if( right > left && right > forward ) { // chemical is to the right
-        o_vpos.zw = rotate( o_vpos.zw, PI_4 );
+        o_vpos.zw = rotate( o_vpos.zw, rot );
       }else if ( right == left ) { // randomly pick a direction
         float rand = fract(sin(a_pos.x)*100000.0);
         if( rand > .5 ) {
-          o_vpos.zw = rotate( o_vpos.zw, PI_4 );
+          o_vpos.zw = rotate( o_vpos.zw, rot );
         }else{
-          o_vpos.zw = rotate( o_vpos.zw, -PI_4 );
+          o_vpos.zw = rotate( o_vpos.zw, -rot );
         }
       } // else keep going the same direction, no change required
       

@@ -19,7 +19,7 @@ window.onload = function() {
   makeSimulationPhase()
   makeDecayDiffusePhase()
   makeTextures()
-  // makeControls()
+  makeControls()
   render()
 }
 
@@ -167,6 +167,12 @@ function makeSimulationUniforms() {
   gl.enableVertexAttribArray( simulationPosition )
 
   gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 0,0 )
+
+  let uN = gl.getUniformLocation(simulationProgram, "n");
+  gl.uniform1i(uN, 4);
+
+  let uSensorDist = gl.getUniformLocation(simulationProgram, "sensor_dist");
+  gl.uniform1i(uSensorDist, 4);
 }
 
 function makeDecayDiffusePhase() {
@@ -242,81 +248,32 @@ function makeTextures() {
 }
 
 function makeControls() {
-  const pane = new Tweakpane.Pane({title: "Reaction Diffusion Simulation"})
+  const pane = new Tweakpane.Pane({title: "Slime Mold Simulation"})
 
   const PARAMS = {
-    "Da": 1.0,
-    "Db": 0.5,
-    "f": 0.055,
-    "k": 0.062,
-    "Variable kill rate": true,
-    "Paused": false
+    "Sensor distance": 3,
+    "Turn amount": 4
   }
 
   simParams = pane.addFolder({title: "Simulation Parameters"})
-  simParams.addInput(PARAMS, 'Da', {
-    min: 0.01,
-    max: 1.0,
-    step: 0.01
+  simParams.addInput(PARAMS, 'Sensor distance', {
+    min: 1,
+    max: 20,
+    step: 1
   }).on('change', (ev) => {
     gl.useProgram(simulationProgram)
-    let loc = gl.getUniformLocation(simulationProgram, "DA");
-    gl.uniform1f(loc, ev.value)
-  });
-  simParams.addInput(PARAMS, 'Db', {
-    min: 0.01,
-    max: 1.0,
-    step: 0.01
-  }).on('change', (ev) => {
-    gl.useProgram(simulationProgram)
-    let loc = gl.getUniformLocation(simulationProgram, "DB");
-    gl.uniform1f(loc, ev.value)
-  });
-  simParams.addInput(PARAMS, 'f', {
-    min: 0.01,
-    max: 1.0,
-    step: 0.01
-  }).on('change', (ev) => {
-    gl.useProgram(simulationProgram)
-    let loc = gl.getUniformLocation(simulationProgram, "f");
-    gl.uniform1f(loc, ev.value)
-  });
-  simParams.addInput(PARAMS, 'k', {
-    min: 0.01,
-    max: 1.0,
-    step: 0.01
-  }).on('change', (ev) => {
-    gl.useProgram(simulationProgram)
-    let loc = gl.getUniformLocation(simulationProgram, "k");
-    gl.uniform1f(loc, ev.value)
-  });
-  
-  simOptions = pane.addFolder({title: "Simulation Options"})
-  simOptions.addInput(PARAMS, 'Paused').on('change', (ev) => {
-    gl.useProgram(simulationProgram)
-    let loc = gl.getUniformLocation(simulationProgram, "pause");
+    let loc = gl.getUniformLocation(simulationProgram, "sensor_dist");
     gl.uniform1i(loc, ev.value)
   });
-  simOptions.addInput(PARAMS, 'Variable kill rate').on('change', (ev) => {
+  simParams.addInput(PARAMS, 'Turn amount', {
+    min: 1,
+    max: 32,
+    step: 1
+  }).on('change', (ev) => {
     gl.useProgram(simulationProgram)
-    let loc = gl.getUniformLocation(simulationProgram, "varying_kill");
+    let loc = gl.getUniformLocation(simulationProgram, "n");
     gl.uniform1i(loc, ev.value)
-  })
-  simOptions.addButton({
-    title: "Reset"
-  }).on('click', () => {
-    gl.useProgram(simulationProgram)
-
-    // Pause the simulation
-    let loc = gl.getUniformLocation(simulationProgram, "pause");
-    gl.uniform1i(loc, 1)
-
-    // Reset to the initial state
-    setInitialState()
-
-    // Unpause sim
-    gl.uniform1i(loc, 0)
-  })
+  });
 }
 
 function render() {
