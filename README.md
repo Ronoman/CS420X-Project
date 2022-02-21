@@ -23,3 +23,5 @@
 [Project](https://ronoman.github.io/CS420X-Project/p4/p4.html)
 
 [Repo](p4/)
+
+[Explanation](p4/writeup.md)
