@@ -47,6 +47,10 @@
     // Params from TweakPane
     uniform int n;
     uniform int sensor_dist;
+    uniform float pulse_freq;
+
+    // Current frame count. Crude time
+    uniform int frame;
 
     // our chemical layer
     uniform sampler2D uSampler;
@@ -90,10 +94,10 @@
       // normalize our {-1,1} vertex coordinates to {0,1} for texture lookups
       vec2 pos = (1. + a_pos.xy) / 2.;
 
-      // read sensor informatino at different angles
-      float left     = readSensor( pos, a_pos.zw, -rot, sensorDistance );
+      // read sensor information at different angles
+      float left     = readSensor( pos, a_pos.zw, -rot + PI/5.*sin(float(frame) / 60.), sensorDistance );
       float forward  = readSensor( pos, a_pos.zw, 0.,    sensorDistance );
-      float right    = readSensor( pos, a_pos.zw, rot,  sensorDistance );
+      float right    = readSensor( pos, a_pos.zw, rot - PI/5.*cos(float(frame) / 60.),  sensorDistance );
       
       // initialize feedback transform output
       o_vpos = a_pos;
@@ -119,15 +123,15 @@
       o_vpos.xy += o_vpos.zw * pixel;
 
       if(o_vpos.x < -1.) {
-        o_vpos.x = resolution.x - o_vpos.x;
+        o_vpos.x += 2.;
       } else if(o_vpos.x > 1.) {
-        o_vpos.x = mod(o_vpos.x, resolution.x);
+        o_vpos.x -= 2.;
       }
 
       if(o_vpos.y < -1.) {
-        o_vpos.y = resolution.y - o_vpos.y;
+        o_vpos.y += 2.;
       } else if(o_vpos.y > 1.) {
-        o_vpos.y = mod(o_vpos.y, resolution.y);
+        o_vpos.y -= 2.;
       }
       
       gl_PointSize = 1.;
@@ -159,30 +163,31 @@
     // Tweakpane params
     uniform float decay;
     
-    float get(int x, int y) {
-      return texture( uSampler, ( gl_FragCoord.xy + vec2(x, y) ) / resolution ).r;
+    float get(int x, int y, vec2 pixel) {
+      return texture( uSampler, ( gl_FragCoord.xy + vec2(x, y) ) * pixel ).r;
     }
     
     out vec4 color;
     void main() {
-      float sum = get(0,0) * -1.;
-      sum += get(-1,0)  *  .2;
-      sum += get(-1,-1) *  .05;
-      sum += get(0,-1)  *  .2;
-      sum += get(1,-1)  *  .05;
-      sum += get(1,0)   *  .2;
-      sum += get(1,1)   *  .05;
-      sum += get(0,1)   *  .2;
-      sum += get(-1,1)  *  .05;
+      vec2 pixel = 1. / resolution;
+
+      float sum = get(0,0, pixel) * -1.;
+      sum += get(-1, 0, pixel)    *  .2;
+      sum += get(-1, -1, pixel)   *  .05;
+      sum += get(0, -1, pixel)    *  .2;
+      sum += get(1, -1, pixel)    *  .05;
+      sum += get(1, 0, pixel)     *  .2;
+      sum += get(1, 1, pixel)     *  .05;
+      sum += get(0, 1, pixel)     *  .2;
+      sum += get(-1, 1, pixel)    *  .05;
 
       // sum *= decay;
     
-      vec2 pos = gl_FragCoord.xy / resolution;
-      vec4 tex = texture( uSampler, pos );
       color = vec4(vec3(sum * 0.9 * decay), .25 );
     }
-    </script>
+  </script>
 
+  <script type='text/javascript' src="agent_count.js"></script>
   <script type='text/javascript' src="render.js"></script>
 
 </html>

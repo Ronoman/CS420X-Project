@@ -1,7 +1,7 @@
-let agentCount = 5000000
+// WARNING! agentCount defined in separate file to allow test harness to update
 
 // "global" variables
-let gl, uTime, uRes, transformFeedback, 
+let gl, time, uRes, transformFeedback, 
     buffer1, buffer2, simulationPosition, copyPosition,
     textureBack, textureFront, framebuffer,
     copyProgram, simulationProgram, quad,
@@ -15,6 +15,8 @@ window.onload = function() {
 
   // define drawing area of canvas. bottom corner, width / height
   gl.viewport( 0,0,gl.drawingBufferWidth, gl.drawingBufferHeight )
+
+  time = 0;
 
   makeCopyPhase()
   makeSimulationPhase()
@@ -298,9 +300,14 @@ function makeControls() {
 
 function render() {
   window.requestAnimationFrame( render )
+
+  time += 1;
 	
 	/* AGENT-BASED SIMULATION */
   gl.useProgram( simulationProgram )
+
+  uTime = gl.getUniformLocation(simulationProgram, "frame");
+  gl.uniform1i(uTime, time);
 
   gl.bindFramebuffer( gl.FRAMEBUFFER, framebuffer )
   // gl.uniform1f( uFrame, frame )
