@@ -95,9 +95,9 @@
       vec2 pos = (1. + a_pos.xy) / 2.;
 
       // read sensor information at different angles
-      float left     = readSensor( pos, a_pos.zw, -rot + PI/5.*sin(float(frame) / 60.), sensorDistance );
+      float left     = readSensor( pos, a_pos.zw, -rot + PI/5.*sin(pulse_freq * float(frame) / 60.), sensorDistance );
       float forward  = readSensor( pos, a_pos.zw, 0.,    sensorDistance );
-      float right    = readSensor( pos, a_pos.zw, rot - PI/5.*cos(float(frame) / 60.),  sensorDistance );
+      float right    = readSensor( pos, a_pos.zw, rot - PI/5.*cos(pulse_freq * float(frame) / 60.),  sensorDistance );
       
       // initialize feedback transform output
       o_vpos = a_pos;

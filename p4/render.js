@@ -1,11 +1,12 @@
 // WARNING! agentCount defined in separate file to allow test harness to update
 
 // "global" variables
-let gl, time, uRes, transformFeedback, 
+var gl, time, uRes, transformFeedback, 
     buffer1, buffer2, simulationPosition, copyPosition,
     textureBack, textureFront, framebuffer,
     copyProgram, simulationProgram, quad,
-    dimensions = { width:null, height:null }
+    dimensions = { width:null, height:null },
+    pane, PARAMS, PRESETS
 
 window.onload = function() {
   const canvas = document.getElementById( 'gl' )
@@ -254,14 +255,51 @@ function makeTextures() {
 }
 
 function makeControls() {
-  const pane = new Tweakpane.Pane({title: "Slime Mold Simulation"})
+  pane = new Tweakpane.Pane({title: "Slime Mold Simulation"})
 
-  const PARAMS = {
+  PARAMS = {
     "Sensor distance": 3,
     "Turn amount": 4,
+    "Pulse frequency scalar": 1.0,
     "Diffuse scale": 1.0,
-    "Color": {r: 255, g: 0, b: 255}
+    "Color": {r: 255, g: 0, b: 255},
+    "Preset": "Heartbeat"
   }
+
+  PRESETS = [
+  {
+    "Sensor distance": 3,
+    "Turn amount": 4,
+    "Pulse frequency scalar": 1.0,
+    "Diffuse scale": 1.0,
+    "Color": {r: 255, g: 0, b: 255},
+    "Preset": "Heartbeat"
+  },
+  {
+    "Sensor distance": 3,
+    "Turn amount": 20,
+    "Pulse frequency scalar": 0.8,
+    "Diffuse scale": 1.0,
+    "Color": {r: 255, g: 0, b: 255},
+    "Preset": "Chaos"
+  },
+  {
+    "Sensor distance": 9,
+    "Turn amount": 3,
+    "Pulse frequency scalar": 4.0,
+    "Diffuse scale": 1.0,
+    "Color": {r: 255, g: 0, b: 255},
+    "Preset": "Pulse colony"
+  },
+  {
+    "Sensor distance": 10,
+    "Turn amount": 5,
+    "Pulse frequency scalar": 1.0,
+    "Diffuse scale": 0.18,
+    "Color": {r: 255, g: 0, b: 255},
+    "Preset": "Swirling storm"
+  }
+]
 
   simParams = pane.addFolder({title: "Simulation Parameters"})
   simParams.addInput(PARAMS, 'Sensor distance', {
@@ -282,6 +320,15 @@ function makeControls() {
     let loc = gl.getUniformLocation(simulationProgram, "n");
     gl.uniform1i(loc, ev.value)
   });
+  simParams.addInput(PARAMS, 'Pulse frequency scalar', {
+    min: 0.25,
+    max: 4.0,
+    step: 0.01
+  }).on('change', ev => {
+    gl.useProgram(simulationProgram);
+    let loc = gl.getUniformLocation(simulationProgram, "pulse_freq");
+    gl.uniform1f(loc, ev.value);
+  })
   simParams.addInput(PARAMS, "Diffuse scale", {
     min: 0.01,
     max: 2.0,
@@ -295,6 +342,21 @@ function makeControls() {
     gl.useProgram(simulationProgram)
     let loc = gl.getUniformLocation(simulationProgram, "color");
     gl.uniform3fv(loc, [ev.value.r/255, ev.value.g/255, ev.value.b/255])
+  })
+
+  presets = pane.addFolder({title: "Presets"})
+  presets.addInput(PARAMS, 'Preset', {
+    options: {
+      heartbeat: "Heartbeat",
+      chaos: "Chaos",
+      pulseColony: "Pulse colony",
+      swirls: "Swirling storm"
+    }
+  }).on('change', ev => {
+    order = ["Heartbeat", "Chaos", "Pulse colony", "Swirling storm"];
+    preset_idx = order.indexOf(ev.value);
+
+    pane.importPreset(PRESETS[preset_idx])
   })
 }
 
