@@ -134,7 +134,7 @@ function makeSimulationBuffer() {
   buffer2 = gl.createBuffer()
 
   // we’re using a vec4 + vec2 ([px, py, dx, dy], [id, unused])
-  const agentSize = 6
+  const agentSize = 4
   const buffer = new Float32Array( agentCount * agentSize )
 	
 	// set random positions / random headings
@@ -143,9 +143,9 @@ function makeSimulationBuffer() {
     buffer[i+1] = -1 + Math.random() * 2
     buffer[i+2] = Math.random()
     buffer[i+3] = Math.random()
-    buffer[i+4] = 0.0
-    buffer[i+5] = 0.0
   }
+
+  console.log(buffer)
 
   gl.bindBuffer( gl.ARRAY_BUFFER, buffer1 )
 
@@ -157,7 +157,7 @@ function makeSimulationBuffer() {
 
   gl.bindBuffer( gl.ARRAY_BUFFER, buffer2 )
 
-  gl.bufferData( gl.ARRAY_BUFFER, agentCount*24, gl.DYNAMIC_COPY )
+  gl.bufferData( gl.ARRAY_BUFFER, agentCount*16, gl.DYNAMIC_COPY )
 
   gl.enable(gl.BLEND);
   gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
@@ -172,7 +172,7 @@ function makeSimulationUniforms() {
   simulationPosition = gl.getAttribLocation( simulationProgram, 'a_pos' )
   //simulationId       = gl.getAttribLocation( simulationProgram, 'a_id' )
 
-  gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 24,0 )
+  gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 16,0 )
   //gl.vertexAttribPointer( simulationId, 2, gl.FLOAT, false, 24, 16)
 
   gl.enableVertexAttribArray( simulationPosition )
@@ -390,7 +390,7 @@ function render() {
 
   // bind our array buffer of molds
   gl.bindBuffer( gl.ARRAY_BUFFER, buffer1 )
-  gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 24, 0 )
+  gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 16, 0 )
   //gl.vertexAttribPointer( simulationId, 2, gl.FLOAT, false, 24, 16 )
   gl.bindBufferBase( gl.TRANSFORM_FEEDBACK_BUFFER, 0, buffer2 )
   
