@@ -2,7 +2,7 @@
 
 // "global" variables
 var gl, time, uRes, transformFeedback, 
-    buffer1, buffer2, simulationPosition, copyPosition,
+    buffer1, buffer2, simulationPosition, simulationId, copyPosition,
     textureBack, textureFront, framebuffer,
     copyProgram, simulationProgram, quad,
     dimensions = { width:null, height:null },
@@ -133,8 +133,8 @@ function makeSimulationBuffer() {
   buffer1 = gl.createBuffer()
   buffer2 = gl.createBuffer()
 
-  // we’re using a vec4
-  const agentSize = 4
+  // we’re using a vec4 + vec2 ([px, py, dx, dy], [id, unused])
+  const agentSize = 6
   const buffer = new Float32Array( agentCount * agentSize )
 	
 	// set random positions / random headings
@@ -143,6 +143,8 @@ function makeSimulationBuffer() {
     buffer[i+1] = -1 + Math.random() * 2
     buffer[i+2] = Math.random()
     buffer[i+3] = Math.random()
+    buffer[i+4] = Math.floor(Math.random() * 2)
+    buffer[i+5] = 0.0
   }
 
   gl.bindBuffer( gl.ARRAY_BUFFER, buffer1 )
@@ -155,22 +157,26 @@ function makeSimulationBuffer() {
 
   gl.bindBuffer( gl.ARRAY_BUFFER, buffer2 )
 
-  gl.bufferData( gl.ARRAY_BUFFER, agentCount*16, gl.DYNAMIC_COPY )
+  gl.bufferData( gl.ARRAY_BUFFER, agentCount*24, gl.DYNAMIC_COPY )
 
   gl.enable(gl.BLEND);
   gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
 }
 
 function makeSimulationUniforms() {
+  gl.useProgram(simulationProgram)
   uRes = gl.getUniformLocation( simulationProgram, 'resolution' )
   gl.uniform2f( uRes, gl.drawingBufferWidth, gl.drawingBufferHeight )
     
   // get position attribute location in shader
   simulationPosition = gl.getAttribLocation( simulationProgram, 'a_pos' )
+  simulationId       = gl.getAttribLocation( simulationProgram, 'a_id' )
   // enable the attribute
   gl.enableVertexAttribArray( simulationPosition )
+  gl.enableVertexAttribArray( simulationId ) 
 
-  gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 0,0 )
+  gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 24,0 )
+  gl.vertexAttribPointer( simulationId, 2, gl.FLOAT, false, 24, 16)
 
   let uN = gl.getUniformLocation(simulationProgram, "n");
   gl.uniform1i(uN, 4);
@@ -178,7 +184,8 @@ function makeSimulationUniforms() {
   let uSensorDist = gl.getUniformLocation(simulationProgram, "sensor_dist");
   gl.uniform1i(uSensorDist, 4);
 
-  let uColor = gl.getUniformLocation(simulationProgram, "color");
+  gl.useProgram(copyProgram);
+  let uColor = gl.getUniformLocation(copyProgram, "color_in");
   gl.uniform3fv(uColor, [1.0, 0.0, 0.75]);
 }
 
@@ -339,8 +346,8 @@ function makeControls() {
     gl.uniform1f(loc, ev.value);
   })
   simParams.addInput(PARAMS, "Color").on('change', (ev) => {
-    gl.useProgram(simulationProgram)
-    let loc = gl.getUniformLocation(simulationProgram, "color");
+    gl.useProgram(copyProgram)
+    let loc = gl.getUniformLocation(copyProgram, "color_in");
     gl.uniform3fv(loc, [ev.value.r/255, ev.value.g/255, ev.value.b/255])
   })
 
@@ -383,7 +390,8 @@ function render() {
 
   // bind our array buffer of molds
   gl.bindBuffer( gl.ARRAY_BUFFER, buffer1 )
-  gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 0,0 )
+  gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 24, 0 )
+  gl.vertexAttribPointer( simulationId, 2, gl.FLOAT, false, 24, 16 )
   gl.bindBufferBase( gl.TRANSFORM_FEEDBACK_BUFFER, 0, buffer2 )
   
   gl.beginTransformFeedback( gl.POINTS )  

@@ -1,0 +1,960 @@
+1644622151797	geckodriver	INFO	Listening on 127.0.0.1:37531
+1644622151815	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "43121" "-no-remote" "-profile" "/tmp/rust_mozprofilefEFtbh"
+1644622152433	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilefEFtbh/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:43121/devtools/browser/abe18c4f-45c5-4f35-8d00-3de99dcd8e14
+1644622153585	Marionette	INFO	Listening on port 41649
+1644622153633	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 1: SyntaxError: unexpected token: identifier
+console.error: Region.jsm: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 772))
+console.error: Region.jsm: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.jsm", 419))
+1644622165053	Marionette	INFO	Stopped listening on port 41649
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644622175767	geckodriver	INFO	Listening on 127.0.0.1:45387
+1644622175770	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "36655" "-no-remote" "-profile" "/tmp/rust_mozprofile1HlLla"
+1644622176403	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile1HlLla/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:36655/devtools/browser/39332e28-b931-404e-8679-a42717946631
+1644622177399	Marionette	INFO	Listening on port 42455
+1644622177482	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 1: SyntaxError: unexpected token: identifier
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+1644622194193	Marionette	INFO	Stopped listening on port 42455
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644622267597	geckodriver	INFO	Listening on 127.0.0.1:34721
+1644622267616	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "37183" "-no-remote" "-profile" "/tmp/rust_mozprofileapqOHT"
+1644622268260	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileapqOHT/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:37183/devtools/browser/e6e5933f-fc8c-4969-84df-9a92c090f2b6
+1644622269235	Marionette	INFO	Listening on port 41049
+1644622269327	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 320: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644622277712	Marionette	INFO	Stopped listening on port 41049
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644622292101	geckodriver	INFO	Listening on 127.0.0.1:44203
+1644622292107	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "45815" "-no-remote" "-profile" "/tmp/rust_mozprofilenhKxdn"
+1644622292727	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilenhKxdn/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:45815/devtools/browser/61f8ece8-3581-4beb-8552-d6db093b9584
+1644622293733	Marionette	INFO	Listening on port 34581
+1644622293823	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 319: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644622305013	Marionette	INFO	Stopped listening on port 34581
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644622323735	geckodriver	INFO	Listening on 127.0.0.1:52311
+1644622323738	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "35509" "-no-remote" "-profile" "/tmp/rust_mozprofileLeisVv"
+1644622324366	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileLeisVv/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:35509/devtools/browser/b895784b-9479-491c-a78c-951b4f463faf
+1644622325351	Marionette	INFO	Listening on port 42879
+1644622325450	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 1: SyntaxError: identifier starts immediately after numeric literal
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+1644622342516	Marionette	INFO	Stopped listening on port 42879
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644622378716	geckodriver	INFO	Listening on 127.0.0.1:59327
+1644622378725	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "49269" "-no-remote" "-profile" "/tmp/rust_mozprofilepIoR7a"
+1644622379373	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilepIoR7a/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:49269/devtools/browser/d12b7d5f-e0be-4547-947a-521e303334f2
+1644622380349	Marionette	INFO	Listening on port 34767
+1644622380442	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 320: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644622404797	Marionette	INFO	Stopped listening on port 34767
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+1644622406080	geckodriver	INFO	Listening on 127.0.0.1:56805
+1644622406082	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "60271" "-no-remote" "-profile" "/tmp/rust_mozprofileEo8np7"
+1644622406711	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileEo8np7/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:60271/devtools/browser/aae15e1c-d8e1-478a-98ef-2a7cfda54250
+1644622407709	Marionette	INFO	Listening on port 41925
+1644622407795	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 319: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644622432178	Marionette	INFO	Stopped listening on port 41925
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644622433485	geckodriver	INFO	Listening on 127.0.0.1:47343
+1644622433493	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "47301" "-no-remote" "-profile" "/tmp/rust_mozprofilepSLbIy"
+1644622434137	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilepSLbIy/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:47301/devtools/browser/abadcbd1-8a9d-4f0a-854a-cb8152631ad6
+1644622435178	Marionette	INFO	Listening on port 36053
+1644622435208	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 1: SyntaxError: identifier starts immediately after numeric literal
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+1644622448776	Marionette	INFO	Stopped listening on port 36053
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644622596323	geckodriver	INFO	Listening on 127.0.0.1:51065
+1644622596327	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "56701" "-no-remote" "-profile" "/tmp/rust_mozprofile4Gj3Uw"
+1644622596988	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile4Gj3Uw/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:56701/devtools/browser/bb8b3246-4fda-4528-b5bc-a334fecaeaf0
+1644622598031	Marionette	INFO	Listening on port 33591
+1644622598143	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 1: SyntaxError: redeclaration of var agentCount
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+1644622609174	Marionette	INFO	Stopped listening on port 33591
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644622637569	geckodriver	INFO	Listening on 127.0.0.1:42711
+1644622637572	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "45195" "-no-remote" "-profile" "/tmp/rust_mozprofile1rF72a"
+1644622638166	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile1rF72a/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:45195/devtools/browser/28e12eb3-9175-4270-a3e8-b0e4d33953e6
+1644622638994	Marionette	INFO	Listening on port 38463
+1644622639085	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644622644407	Marionette	INFO	Stopped listening on port 38463
+JavaScript error: chrome://remote/content/marionette/cert.js, line 55: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+1644622651762	geckodriver	INFO	Listening on 127.0.0.1:43859
+1644622651765	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "56973" "-no-remote" "-profile" "/tmp/rust_mozprofile8J2Bl9"
+1644622652463	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile8J2Bl9/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:56973/devtools/browser/e99c0166-858b-42c0-a0f0-8d0e8feeb7de
+1644622653497	Marionette	INFO	Listening on port 46405
+1644622653577	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644622677907	Marionette	INFO	Stopped listening on port 46405
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644622680057	geckodriver	INFO	Listening on 127.0.0.1:36387
+1644622680059	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "35629" "-no-remote" "-profile" "/tmp/rust_mozprofileXB527Q"
+1644622680693	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileXB527Q/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:35629/devtools/browser/f1298ed9-fd58-4c01-a57c-1f81478d0da7
+1644622681758	Marionette	INFO	Listening on port 40391
+1644622681774	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1644622802504	geckodriver	INFO	Listening on 127.0.0.1:35633
+1644622802507	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "59239" "-no-remote" "-profile" "/tmp/rust_mozprofileXrkoKU"
+1644622803200	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileXrkoKU/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:59239/devtools/browser/674bf764-e31a-4872-b6cc-b4a55ca5e985
+1644622804203	Marionette	INFO	Listening on port 38789
+1644622804226	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644622828620	Marionette	INFO	Stopped listening on port 38789
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644622829757	geckodriver	INFO	Listening on 127.0.0.1:39707
+1644622829769	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "56215" "-no-remote" "-profile" "/tmp/rust_mozprofilexkAF9X"
+1644622830398	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilexkAF9X/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:56215/devtools/browser/29d0660c-cbc6-4890-8d8b-a27c810b318a
+1644622831407	Marionette	INFO	Listening on port 41965
+1644622831481	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644622855853	Marionette	INFO	Stopped listening on port 41965
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644622857727	geckodriver	INFO	Listening on 127.0.0.1:60063
+1644622857729	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "34421" "-no-remote" "-profile" "/tmp/rust_mozprofileJlyEGb"
+1644622858431	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileJlyEGb/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:34421/devtools/browser/628a6f07-380f-4cbc-96cd-d08b21201f21
+1644622859419	Marionette	INFO	Listening on port 37139
+1644622859441	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644622883779	Marionette	INFO	Stopped listening on port 37139
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644622886050	geckodriver	INFO	Listening on 127.0.0.1:36433
+1644622886051	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "35497" "-no-remote" "-profile" "/tmp/rust_mozprofiledb05xp"
+1644622886650	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofiledb05xp/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:35497/devtools/browser/17448e24-5e8e-441b-bda5-55dddf80a8b9
+1644622887545	Marionette	INFO	Listening on port 41929
+1644622887564	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644622911940	Marionette	INFO	Stopped listening on port 41929
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+1644622915353	geckodriver	INFO	Listening on 127.0.0.1:41533
+1644622915355	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "34975" "-no-remote" "-profile" "/tmp/rust_mozprofileQrLORh"
+1644622915975	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileQrLORh/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:34975/devtools/browser/9a52d3b5-40f1-4e96-8f19-74ca6d172c11
+1644622917001	Marionette	INFO	Listening on port 45205
+1644622917068	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644622941382	Marionette	INFO	Stopped listening on port 45205
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+1644622944859	geckodriver	INFO	Listening on 127.0.0.1:60399
+1644622944861	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "46593" "-no-remote" "-profile" "/tmp/rust_mozprofileB2girx"
+1644622945478	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileB2girx/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:46593/devtools/browser/4342fadb-2c25-4e0b-a27c-d4dd91cb19a5
+1644622946503	Marionette	INFO	Listening on port 36125
+1644622946584	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644622970966	Marionette	INFO	Stopped listening on port 36125
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644622977223	geckodriver	INFO	Listening on 127.0.0.1:48563
+1644622977225	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "40699" "-no-remote" "-profile" "/tmp/rust_mozprofileEI4Ved"
+1644622977828	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileEI4Ved/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:40699/devtools/browser/050689b9-42b0-4a72-a5f2-a76fca4a76fb
+1644622978855	Marionette	INFO	Listening on port 46085
+1644622978937	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644623003237	Marionette	INFO	Stopped listening on port 46085
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644623009916	geckodriver	INFO	Listening on 127.0.0.1:57893
+1644623010426	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "52721" "-no-remote" "-profile" "/tmp/rust_mozprofile8jg7wV"
+1644623011037	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile8jg7wV/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:52721/devtools/browser/1e3ef6fe-c845-4135-87cd-230ffde101d4
+1644623012035	Marionette	INFO	Listening on port 39641
+1644623012138	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644623036483	Marionette	INFO	Stopped listening on port 39641
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644623046256	geckodriver	INFO	Listening on 127.0.0.1:40397
+1644623046266	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "38901" "-no-remote" "-profile" "/tmp/rust_mozprofileKSTFX2"
+1644623046905	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileKSTFX2/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:38901/devtools/browser/3acabece-89f2-42f2-82f9-88628a6c427d
+1644623047915	Marionette	INFO	Listening on port 42407
+1644623047981	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644623072352	Marionette	INFO	Stopped listening on port 42407
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644623077886	geckodriver	INFO	Listening on 127.0.0.1:46049
+1644623077888	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "53275" "-no-remote" "-profile" "/tmp/rust_mozprofilebl7Gy3"
+1644623078485	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilebl7Gy3/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:53275/devtools/browser/34fd3f3f-4383-4786-a108-47df154c7868
+1644623079479	Marionette	INFO	Listening on port 40399
+1644623079499	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644623103935	Marionette	INFO	Stopped listening on port 40399
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644623279168	geckodriver	INFO	Listening on 127.0.0.1:45991
+1644623279171	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "52567" "-no-remote" "-profile" "/tmp/rust_mozprofileZXmIdH"
+1644623279869	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileZXmIdH/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:52567/devtools/browser/1c178b8a-4906-4ac6-aebe-b6846955eba5
+1644623280899	Marionette	INFO	Listening on port 43129
+1644623280982	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644623299864	Marionette	INFO	Stopped listening on port 43129
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644623318069	geckodriver	INFO	Listening on 127.0.0.1:48017
+1644623318071	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "43559" "-no-remote" "-profile" "/tmp/rust_mozprofileNyX0Rp"
+1644623318756	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileNyX0Rp/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:43559/devtools/browser/5c70d378-e8f2-419e-ae11-48267b4709e8
+1644623319771	Marionette	INFO	Listening on port 38951
+1644623319785	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1644623341769	geckodriver	INFO	Listening on 127.0.0.1:54657
+1644623341772	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "34057" "-no-remote" "-profile" "/tmp/rust_mozprofilegpAUlo"
+1644623342510	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilegpAUlo/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:34057/devtools/browser/98337e67-36fb-44d6-91c1-fa555a8faece
+1644623343464	Marionette	INFO	Listening on port 37823
+1644623343483	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644623369418	Marionette	INFO	Stopped listening on port 37823
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644623476860	geckodriver	INFO	Listening on 127.0.0.1:49261
+1644623476863	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "49663" "-no-remote" "-profile" "/tmp/rust_mozprofilenBlRZ7"
+1644623477513	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilenBlRZ7/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:49663/devtools/browser/3070d722-dc3a-4bce-b348-99cd0bca83d9
+1644623478505	Marionette	INFO	Listening on port 33029
+1644623478575	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644623560441	Marionette	INFO	Stopped listening on port 33029
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+1644623884047	geckodriver	INFO	Listening on 127.0.0.1:49943
+1644623884050	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "53055" "-no-remote" "-profile" "/tmp/rust_mozprofilenVXDqJ"
+1644623884698	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilenVXDqJ/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:53055/devtools/browser/29b4516b-8391-49e8-90c3-68b573b96a29
+1644623885725	Marionette	INFO	Listening on port 44223
+1644623885764	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644623928347	Marionette	INFO	Stopped listening on port 44223
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644623933194	geckodriver	INFO	Listening on 127.0.0.1:44497
+1644623933196	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "38087" "-no-remote" "-profile" "/tmp/rust_mozprofileQhYHuK"
+1644623933823	Marionette	INFO	Marionette enabled
+1644623951041	geckodriver	INFO	Listening on 127.0.0.1:50021
+1644623951044	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "32941" "-no-remote" "-profile" "/tmp/rust_mozprofilevFzh7d"
+1644623951699	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilevFzh7d/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:32941/devtools/browser/cd3d382f-92e6-44c3-8ff0-e4e28fbe7874
+1644623952745	Marionette	INFO	Listening on port 45835
+1644623952770	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644623995240	Marionette	INFO	Stopped listening on port 45835
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644623997472	geckodriver	INFO	Listening on 127.0.0.1:48305
+1644623997474	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "44449" "-no-remote" "-profile" "/tmp/rust_mozprofile9hciXn"
+1644623998082	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile9hciXn/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:44449/devtools/browser/80f7f1ab-815a-4607-804b-f0bdbc7d2320
+1644623999057	Marionette	INFO	Listening on port 45083
+1644623999090	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644624041688	Marionette	INFO	Stopped listening on port 45083
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644624043487	geckodriver	INFO	Listening on 127.0.0.1:58675
+1644624043489	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "59269" "-no-remote" "-profile" "/tmp/rust_mozprofileVbcHvZ"
+1644624044200	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileVbcHvZ/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:59269/devtools/browser/0eeddce7-c65a-4cee-ada5-1e67cd3c095d
+1644624045190	Marionette	INFO	Listening on port 42617
+1644624045208	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644624087727	Marionette	INFO	Stopped listening on port 42617
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644624090486	geckodriver	INFO	Listening on 127.0.0.1:42435
+1644624090490	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "52997" "-no-remote" "-profile" "/tmp/rust_mozprofilewqyor9"
+1644624091112	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilewqyor9/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:52997/devtools/browser/6bfa35b5-b250-4d09-b9fb-ec05babb8fc9
+1644624092102	Marionette	INFO	Listening on port 39987
+1644624092204	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644624134698	Marionette	INFO	Stopped listening on port 39987
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644624140363	geckodriver	INFO	Listening on 127.0.0.1:54127
+1644624140365	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "39797" "-no-remote" "-profile" "/tmp/rust_mozprofilePq0vU1"
+1644624140960	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilePq0vU1/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:39797/devtools/browser/6fc342a8-e661-4ff4-8f77-5e4600569d27
+1644624141977	Marionette	INFO	Listening on port 44313
+1644624142076	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644624184576	Marionette	INFO	Stopped listening on port 44313
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644624189002	geckodriver	INFO	Listening on 127.0.0.1:37107
+1644624189004	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "49695" "-no-remote" "-profile" "/tmp/rust_mozprofile5BKCCS"
+1644624189657	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile5BKCCS/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:49695/devtools/browser/734e0c64-e29a-4364-a51c-aa42d6b63e48
+1644624190670	Marionette	INFO	Listening on port 44881
+1644624190716	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644624233199	Marionette	INFO	Stopped listening on port 44881
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644624239758	geckodriver	INFO	Listening on 127.0.0.1:36041
+1644624239759	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "54995" "-no-remote" "-profile" "/tmp/rust_mozprofile2qYeIM"
+1644624240373	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile2qYeIM/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:54995/devtools/browser/2e78e8d1-855a-4576-9f01-9efc8ce0cd64
+1644624241222	Marionette	INFO	Listening on port 36979
+1644624241304	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644624286050	Marionette	INFO	Stopped listening on port 36979
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644624288987	geckodriver	INFO	Listening on 127.0.0.1:43759
+1644624288989	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "49007" "-no-remote" "-profile" "/tmp/rust_mozprofileJUaSfV"
+1644624289657	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileJUaSfV/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:49007/devtools/browser/2ef691c1-9c88-473e-a617-562d7102cd7b
+1644624290679	Marionette	INFO	Listening on port 41941
+1644624290705	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644624333915	Marionette	INFO	Stopped listening on port 41941
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+1644624334475	geckodriver	INFO	Listening on 127.0.0.1:56859
+1644624334477	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "57805" "-no-remote" "-profile" "/tmp/rust_mozprofileqd7BbW"
+1644624335220	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileqd7BbW/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:57805/devtools/browser/80ac7401-6437-4081-ad71-ccae9b74983c
+1644624336158	Marionette	INFO	Listening on port 40949
+1644624336203	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644624378819	Marionette	INFO	Stopped listening on port 40949
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644624379222	geckodriver	INFO	Listening on 127.0.0.1:40411
+1644624379224	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "40227" "-no-remote" "-profile" "/tmp/rust_mozprofileeYBuNu"
+1644624379859	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileeYBuNu/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:40227/devtools/browser/9660b6c2-fd5d-4906-95a6-9e4f899f89da
+1644624380805	Marionette	INFO	Listening on port 38615
+1644624380837	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644624423352	Marionette	INFO	Stopped listening on port 38615
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644624423780	geckodriver	INFO	Listening on 127.0.0.1:60097
+1644624423781	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "44461" "-no-remote" "-profile" "/tmp/rust_mozprofile5Td0JJ"
+1644624424377	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile5Td0JJ/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:44461/devtools/browser/77ec39cc-a361-4b74-8069-f8fbed614e25
+1644624425344	Marionette	INFO	Listening on port 46763
+1644624425394	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644624467955	Marionette	INFO	Stopped listening on port 46763
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644624468481	geckodriver	INFO	Listening on 127.0.0.1:57399
+1644624468482	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "56989" "-no-remote" "-profile" "/tmp/rust_mozprofilec3IsNj"
+1644624469060	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilec3IsNj/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:56989/devtools/browser/aa18d6ce-fa09-4b81-be40-3277003faaba
+1644624470019	Marionette	INFO	Listening on port 45269
+1644624470095	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644624512553	Marionette	INFO	Stopped listening on port 45269
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644624513057	geckodriver	INFO	Listening on 127.0.0.1:59641
+1644624513065	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "34861" "-no-remote" "-profile" "/tmp/rust_mozprofileEHgdqe"
+1644624513724	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileEHgdqe/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:34861/devtools/browser/6514f762-2080-40c0-aa2a-8089d257da44
+1644624514598	Marionette	INFO	Listening on port 39257
+1644624514711	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644624557277	Marionette	INFO	Stopped listening on port 39257
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644624557673	geckodriver	INFO	Listening on 127.0.0.1:33915
+1644624557681	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "49343" "-no-remote" "-profile" "/tmp/rust_mozprofileVqKZM2"
+1644624558431	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileVqKZM2/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:49343/devtools/browser/344412dd-7ca1-4fb1-adb6-b27cb6b685d2
+1644624559429	Marionette	INFO	Listening on port 46749
+1644624559513	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1644634055883	geckodriver	INFO	Listening on 127.0.0.1:41697
+1644634055894	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "59153" "-no-remote" "-profile" "/tmp/rust_mozprofileKlCa7N"
+1644634056754	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileKlCa7N/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:59153/devtools/browser/23886dde-ea94-4f2e-a7b0-3e225ac788d1
+1644634057931	Marionette	INFO	Listening on port 35645
+1644634058010	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634100329	Marionette	INFO	Stopped listening on port 35645
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644634100779	geckodriver	INFO	Listening on 127.0.0.1:57665
+1644634100784	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "46483" "-no-remote" "-profile" "/tmp/rust_mozprofiletCX3VW"
+1644634101417	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofiletCX3VW/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:46483/devtools/browser/d85d1b1e-149a-441e-b6a1-cdfb22665392
+1644634102371	Marionette	INFO	Listening on port 35599
+1644634102396	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634144631	Marionette	INFO	Stopped listening on port 35599
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644634145296	geckodriver	INFO	Listening on 127.0.0.1:33253
+1644634145305	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "45909" "-no-remote" "-profile" "/tmp/rust_mozprofilenw8Ghd"
+1644634145956	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilenw8Ghd/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:45909/devtools/browser/ef0e91a8-077c-4765-8ee1-ff2b6adb4fad
+1644634146948	Marionette	INFO	Listening on port 40301
+1644634147042	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634189438	Marionette	INFO	Stopped listening on port 40301
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644634189903	geckodriver	INFO	Listening on 127.0.0.1:47873
+1644634189905	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "54169" "-no-remote" "-profile" "/tmp/rust_mozprofileMpeddA"
+1644634190553	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileMpeddA/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:54169/devtools/browser/18d7a9c4-d802-4bc6-b270-80217795593c
+1644634191598	Marionette	INFO	Listening on port 32787
+1644634191629	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634233928	Marionette	INFO	Stopped listening on port 32787
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644634234646	geckodriver	INFO	Listening on 127.0.0.1:48555
+1644634234652	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "49881" "-no-remote" "-profile" "/tmp/rust_mozprofile8JhiPT"
+1644634235326	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile8JhiPT/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:49881/devtools/browser/3db333c8-a2eb-4c80-9ebb-e4f5ed7b4b56
+1644634236317	Marionette	INFO	Listening on port 45835
+1644634236366	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634278758	Marionette	INFO	Stopped listening on port 45835
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644634279467	geckodriver	INFO	Listening on 127.0.0.1:48655
+1644634279469	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "60735" "-no-remote" "-profile" "/tmp/rust_mozprofileF0f7zd"
+1644634280108	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileF0f7zd/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:60735/devtools/browser/e0975e74-add3-4324-9fb4-9a5a823ceadf
+1644634281086	Marionette	INFO	Listening on port 44437
+1644634281212	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634323523	Marionette	INFO	Stopped listening on port 44437
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644634324442	geckodriver	INFO	Listening on 127.0.0.1:47661
+1644634324444	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "35039" "-no-remote" "-profile" "/tmp/rust_mozprofilevpQFGP"
+1644634325036	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilevpQFGP/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:35039/devtools/browser/8b72faae-15a6-4c06-8059-6c3622172298
+1644634326061	Marionette	INFO	Listening on port 37959
+1644634326185	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634368536	Marionette	INFO	Stopped listening on port 37959
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644634370277	geckodriver	INFO	Listening on 127.0.0.1:37503
+1644634370279	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "52633" "-no-remote" "-profile" "/tmp/rust_mozprofileUJBSFz"
+1644634370871	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileUJBSFz/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:52633/devtools/browser/e5f5123b-dc2c-4a57-84ba-4fe2fe64adc9
+1644634371924	Marionette	INFO	Listening on port 38913
+1644634371992	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634414321	Marionette	INFO	Stopped listening on port 38913
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644634415660	geckodriver	INFO	Listening on 127.0.0.1:39335
+1644634415662	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "53257" "-no-remote" "-profile" "/tmp/rust_mozprofiledQFHMb"
+1644634416327	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofiledQFHMb/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:53257/devtools/browser/4e15b620-25a2-4994-a40d-0ba74a17cacb
+1644634417331	Marionette	INFO	Listening on port 34667
+1644634417373	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634459780	Marionette	INFO	Stopped listening on port 34667
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644634461000	geckodriver	INFO	Listening on 127.0.0.1:45387
+1644634461002	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "36307" "-no-remote" "-profile" "/tmp/rust_mozprofileJ6Q1qD"
+1644634461653	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileJ6Q1qD/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:36307/devtools/browser/fab82b06-b54d-49d9-9dc9-66f1bec7f74b
+1644634462606	Marionette	INFO	Listening on port 36665
+1644634462713	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634505146	Marionette	INFO	Stopped listening on port 36665
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644634512875	geckodriver	INFO	Listening on 127.0.0.1:53847
+1644634512884	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "53943" "-no-remote" "-profile" "/tmp/rust_mozprofilevZA4Tb"
+1644634513472	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilevZA4Tb/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:53943/devtools/browser/5d035221-b0c9-4a93-b043-b65be5c60e5f
+1644634514510	Marionette	INFO	Listening on port 46739
+1644634514606	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634558161	Marionette	INFO	Stopped listening on port 46739
+WARNING: At least one completion condition is taking too long to complete. Conditions: [{"name":"SessionStore: flushing all windows","state":{"total":1,"current":0},"filename":"resource:///modules/sessionstore/SessionStore.jsm","lineNumber":2057,"stack":["resource:///modules/sessionstore/SessionStore.jsm:ssi_onQuitApplicationGranted:2057","resource:///modules/sessionstore/SessionStore.jsm:ssi_observe:976","chrome://remote/content/marionette/driver.js:GeckoDriver.prototype.quit:2713","chrome://remote/content/marionette/server.js:despatch:306","chrome://remote/content/marionette/server.js:execute:279","chrome://remote/content/marionette/server.js:onPacket/<:252","chrome://remote/content/marionette/server.js:onPacket:253","chrome://remote/content/marionette/transport.js:_onJSONObjectReady/<:500"]}] Barrier: quit-application-granted
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644634569563	geckodriver	INFO	Listening on 127.0.0.1:51463
+1644634569565	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "39499" "-no-remote" "-profile" "/tmp/rust_mozprofileQE9ppX"
+1644634570179	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileQE9ppX/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:39499/devtools/browser/4e2e0555-381a-46b8-bdf0-f1c8e4ede261
+1644634571189	Marionette	INFO	Listening on port 40803
+1644634571288	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634613635	Marionette	INFO	Stopped listening on port 40803
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644634618348	geckodriver	INFO	Listening on 127.0.0.1:41553
+1644634618350	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "52073" "-no-remote" "-profile" "/tmp/rust_mozprofilebxdTBz"
+1644634618960	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilebxdTBz/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:52073/devtools/browser/2b233325-ef24-4f3a-a0f2-6ebe853d594f
+1644634619952	Marionette	INFO	Listening on port 41947
+1644634619962	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634662275	Marionette	INFO	Stopped listening on port 41947
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644634667296	geckodriver	INFO	Listening on 127.0.0.1:52563
+1644634667298	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "37701" "-no-remote" "-profile" "/tmp/rust_mozprofileGONE7H"
+1644634667995	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileGONE7H/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:37701/devtools/browser/8b818989-19ec-4abd-9129-9c52c1191036
+1644634669001	Marionette	INFO	Listening on port 43507
+1644634669011	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634711412	Marionette	INFO	Stopped listening on port 43507
+WARNING: At least one completion condition is taking too long to complete. Conditions: [{"name":"SessionStore: flushing all windows","state":{"total":1,"current":0},"filename":"resource:///modules/sessionstore/SessionStore.jsm","lineNumber":2057,"stack":["resource:///modules/sessionstore/SessionStore.jsm:ssi_onQuitApplicationGranted:2057","resource:///modules/sessionstore/SessionStore.jsm:ssi_observe:976","chrome://remote/content/marionette/driver.js:GeckoDriver.prototype.quit:2713","chrome://remote/content/marionette/server.js:despatch:306","chrome://remote/content/marionette/server.js:execute:279","chrome://remote/content/marionette/server.js:onPacket/<:252","chrome://remote/content/marionette/server.js:onPacket:253","chrome://remote/content/marionette/transport.js:_onJSONObjectReady/<:500"]}] Barrier: quit-application-granted
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644634724760	geckodriver	INFO	Listening on 127.0.0.1:35615
+1644634724769	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "51485" "-no-remote" "-profile" "/tmp/rust_mozprofilefhWWOt"
+1644634725422	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilefhWWOt/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:51485/devtools/browser/6dc6da24-7ade-4904-82e3-42ff5d8d099b
+1644634726444	Marionette	INFO	Listening on port 43229
+1644634726485	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634768828	Marionette	INFO	Stopped listening on port 43229
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644634769175	geckodriver	INFO	Listening on 127.0.0.1:35737
+1644634769184	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "55647" "-no-remote" "-profile" "/tmp/rust_mozprofileqxPIpe"
+1644634769819	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileqxPIpe/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:55647/devtools/browser/c336b45d-3de3-44e0-a7cf-f67b8ed15161
+1644634770760	Marionette	INFO	Listening on port 44707
+1644634770796	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634813216	Marionette	INFO	Stopped listening on port 44707
+1644634813509	geckodriver	INFO	Listening on 127.0.0.1:57911
+1644634813511	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "48361" "-no-remote" "-profile" "/tmp/rust_mozprofilehgE7Gb"
+1644634814115	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilehgE7Gb/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:48361/devtools/browser/d55c7b95-262b-460e-ba71-ddc7b89e65c6
+1644634815144	Marionette	INFO	Listening on port 41473
+1644634815258	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634857649	Marionette	INFO	Stopped listening on port 41473
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644634857982	geckodriver	INFO	Listening on 127.0.0.1:39837
+1644634857991	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "33409" "-no-remote" "-profile" "/tmp/rust_mozprofile9Latt3"
+1644634858631	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofile9Latt3/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:33409/devtools/browser/900a0022-501c-48cf-86d5-54dc8ed024f3
+1644634859619	Marionette	INFO	Listening on port 36531
+1644634859703	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634902020	Marionette	INFO	Stopped listening on port 36531
+WARNING: At least one completion condition is taking too long to complete. Conditions: [{"name":"SessionStore: flushing all windows","state":{"total":1,"current":0},"filename":"resource:///modules/sessionstore/SessionStore.jsm","lineNumber":2057,"stack":["resource:///modules/sessionstore/SessionStore.jsm:ssi_onQuitApplicationGranted:2057","resource:///modules/sessionstore/SessionStore.jsm:ssi_observe:976","chrome://remote/content/marionette/driver.js:GeckoDriver.prototype.quit:2713","chrome://remote/content/marionette/server.js:despatch:306","chrome://remote/content/marionette/server.js:execute:279","chrome://remote/content/marionette/server.js:onPacket/<:252","chrome://remote/content/marionette/server.js:onPacket:253","chrome://remote/content/marionette/transport.js:_onJSONObjectReady/<:500"]}] Barrier: quit-application-granted
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644634917051	geckodriver	INFO	Listening on 127.0.0.1:58197
+1644634917053	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "37791" "-no-remote" "-profile" "/tmp/rust_mozprofilev1nGSw"
+1644634917643	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilev1nGSw/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:37791/devtools/browser/56a1a259-1abf-4fb0-9fab-2db4eaf54826
+1644634918685	Marionette	INFO	Listening on port 43265
+1644634918766	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644634961351	Marionette	INFO	Stopped listening on port 43265
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
+1644634961730	geckodriver	INFO	Listening on 127.0.0.1:41449
+1644634961732	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "43573" "-no-remote" "-profile" "/tmp/rust_mozprofileQj1dI9"
+1644634962348	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileQj1dI9/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:43573/devtools/browser/2f99c978-133e-47b5-8965-cdf39965a01a
+1644634963319	Marionette	INFO	Listening on port 38173
+1644634963345	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644635005809	Marionette	INFO	Stopped listening on port 38173
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1644693674789	geckodriver	INFO	Listening on 127.0.0.1:46923
+1644693675290	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--remote-debugging-port" "49893" "-no-remote" "-profile" "/tmp/rust_mozprofileY51tlX"
+1644693675920	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileY51tlX/search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:49893/devtools/browser/2b9b10da-3d16-4ae0-83f7-187b83e98259
+1644693676888	Marionette	INFO	Listening on port 44841
+1644693676907	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: file:///home/ronoman/Repos/CS420X-Project/p4/render.js, line 321: WebGL warning: drawArraysInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+1644693712764	Marionette	INFO	Stopped listening on port 44841
+WARNING: At least one completion condition is taking too long to complete. Conditions: [{"name":"SessionStore: flushing all windows","state":{"total":1,"current":0},"filename":"resource:///modules/sessionstore/SessionStore.jsm","lineNumber":2057,"stack":["resource:///modules/sessionstore/SessionStore.jsm:ssi_onQuitApplicationGranted:2057","resource:///modules/sessionstore/SessionStore.jsm:ssi_observe:976","chrome://remote/content/marionette/driver.js:GeckoDriver.prototype.quit:2713","chrome://remote/content/marionette/server.js:despatch:306","chrome://remote/content/marionette/server.js:execute:279","chrome://remote/content/marionette/server.js:onPacket/<:252","chrome://remote/content/marionette/server.js:onPacket:253","chrome://remote/content/marionette/transport.js:_onJSONObjectReady/<:500"]}] Barrier: quit-application-granted
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x3A0078,name=PContent::Msg_DestroyBrowsingContextGroup) Closed channel: cannot send/recv
+
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x230030,name=PBrowser::Msg___delete__) Channel closing: too late to send/recv, messages will be lost
+
