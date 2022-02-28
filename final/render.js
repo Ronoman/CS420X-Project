@@ -143,7 +143,7 @@ function makeSimulationBuffer() {
     buffer[i+1] = -1 + Math.random() * 2
     buffer[i+2] = Math.random()
     buffer[i+3] = Math.random()
-    buffer[i+4] = Math.floor(Math.random() * 2)
+    buffer[i+4] = 0.0
     buffer[i+5] = 0.0
   }
 
@@ -170,13 +170,13 @@ function makeSimulationUniforms() {
     
   // get position attribute location in shader
   simulationPosition = gl.getAttribLocation( simulationProgram, 'a_pos' )
-  simulationId       = gl.getAttribLocation( simulationProgram, 'a_id' )
-  // enable the attribute
-  gl.enableVertexAttribArray( simulationPosition )
-  gl.enableVertexAttribArray( simulationId ) 
+  //simulationId       = gl.getAttribLocation( simulationProgram, 'a_id' )
 
   gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 24,0 )
-  gl.vertexAttribPointer( simulationId, 2, gl.FLOAT, false, 24, 16)
+  //gl.vertexAttribPointer( simulationId, 2, gl.FLOAT, false, 24, 16)
+
+  gl.enableVertexAttribArray( simulationPosition )
+  //gl.enableVertexAttribArray( simulationId )
 
   let uN = gl.getUniformLocation(simulationProgram, "n");
   gl.uniform1i(uN, 4);
@@ -391,7 +391,7 @@ function render() {
   // bind our array buffer of molds
   gl.bindBuffer( gl.ARRAY_BUFFER, buffer1 )
   gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 24, 0 )
-  gl.vertexAttribPointer( simulationId, 2, gl.FLOAT, false, 24, 16 )
+  //gl.vertexAttribPointer( simulationId, 2, gl.FLOAT, false, 24, 16 )
   gl.bindBufferBase( gl.TRANSFORM_FEEDBACK_BUFFER, 0, buffer2 )
   
   gl.beginTransformFeedback( gl.POINTS )  

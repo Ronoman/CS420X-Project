@@ -45,8 +45,8 @@
     precision mediump float;
 
     // input from our feedback TRANSFORM_FEEDBACK
-    in vec2 a_id;
     in vec4 a_pos;
+    in vec2 a_id;
 
     uniform vec2 resolution;
     
@@ -87,12 +87,10 @@
     } 
 
     void main() {
-      vec2 tmp = a_id.xy;
-
       float rot = PI / float(n);
 
-      if(int(a_id.x) == 0) {
-        rot *= 1./1.1;
+      if(int(a_id.x) == 1) {
+        rot *= 1./1.001;
       }
 
       // get normalied height / width of a single pixel 
