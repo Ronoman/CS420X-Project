@@ -35,8 +35,11 @@
       vec4 tex = texture( uSampler, pos );
 
       vec3 colorR = mix(vec3(0.), color_in, tex.r);
+      vec3 colorG = mix(vec3(0.), vec3(0., 1., 0.), tex.g);
 
-      color = vec4( colorR, 1. );
+      vec3 sum_color = colorR.xyz + colorG.xyz;
+
+      color = vec4( sum_color, 1. );
     }
   </script>
 
@@ -46,7 +49,11 @@
 
     // input from our feedback TRANSFORM_FEEDBACK
     in vec4 a_pos;
-    in vec2 a_id;
+
+    // Colony ID, passed directly to frag shader
+    in ivec2 a_id;
+
+    flat out ivec2 colony_id;
 
     uniform vec2 resolution;
     
@@ -80,18 +87,16 @@
     // dir - heading of agent
     // angle - direction to sense, in radians
     // distance - distance to sense
-    float readSensor( vec2 pos, vec2 dir, float angle, vec2 distance ) {
+    float readSensor( vec2 pos, vec2 dir, float angle, vec2 distance, int colonyId ) {
       vec2 newangle  = rotate( dir, angle  );
       vec2 offset = newangle * distance;
-      return texture( uSampler, pos + offset ).r;
+      return texture( uSampler, pos + offset )[colonyId];
     } 
 
     void main() {
-      float rot = PI / float(n);
+      colony_id = a_id;
 
-      if(int(a_id.x) == 1) {
-        rot *= 1./1.001;
-      }
+      float rot = PI / float(n);
 
       // get normalied height / width of a single pixel 
       vec2 pixel = 1. / resolution;
@@ -103,15 +108,14 @@
       vec2 pos = (1. + a_pos.xy) / 2.;
 
       // read sensor information at different angles
-      float left     = readSensor( pos, a_pos.zw, -rot + PI/5.*sin(pulse_freq * float(frame) / 60.), sensorDistance );
-      float forward  = readSensor( pos, a_pos.zw, 0.,    sensorDistance );
-      float right    = readSensor( pos, a_pos.zw, rot - PI/5.*cos(pulse_freq * float(frame) / 60.),  sensorDistance );
+      float left     = readSensor( pos, a_pos.zw, -rot + PI/5.*sin(pulse_freq * float(frame) / 60.), sensorDistance, a_id.x );
+      float forward  = readSensor( pos, a_pos.zw, 0.,    sensorDistance, a_id.x );
+      float right    = readSensor( pos, a_pos.zw, rot - PI/5.*cos(pulse_freq * float(frame) / 60.),  sensorDistance, a_id.x );
       
       // initialize feedback transform output
       o_vpos = a_pos;
 
       left = left;
-
       // if most chemical is found to left... 
       if( left > forward && left > right ) {
         // rotate left and store in .zw
@@ -152,9 +156,11 @@
   <script id='simulationFragment' type='x-shader/x-fragment'>#version 300 es
     precision mediump float;
     
+    flat in ivec2 colony_id;
+
     out vec4 o_frag;
     void main() {
-      o_frag = vec4(1., 1., 1., .25 );
+      o_frag = vec4(float(colony_id.x == 0), float(colony_id.x == 1), 1., .25 );
     }
   </script>
 

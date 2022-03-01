@@ -2,7 +2,7 @@
 
 // "global" variables
 var gl, time, uRes, transformFeedback, 
-    buffer1, buffer2, simulationPosition, simulationId, copyPosition,
+    buffer1, buffer2, colonyBuffer, simulationPosition, simulationId, copyPosition,
     textureBack, textureFront, framebuffer,
     copyProgram, simulationProgram, quad,
     dimensions = { width:null, height:null },
@@ -128,13 +128,23 @@ function makeSimulationShaders() {
   gl.useProgram(  simulationProgram )
 }
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+
 function makeSimulationBuffer() {
   // create a buffer object to store vertices
   buffer1 = gl.createBuffer()
   buffer2 = gl.createBuffer()
 
-  // we’re using a vec4 + vec2 ([px, py, dx, dy], [id, unused])
-  const agentSize = 6
+  colonyBuffer = gl.createBuffer()
+
+  const FLOAT_BYTES = 4
+
+  const agentSize = 4
   const buffer = new Float32Array( agentCount * agentSize )
 	
 	// set random positions / random headings
@@ -143,12 +153,17 @@ function makeSimulationBuffer() {
     buffer[i+1] = -1 + Math.random() * 2
     buffer[i+2] = Math.random()
     buffer[i+3] = Math.random()
-    buffer[i+4] = 0.0
-    buffer[i+5] = 0.0
+  }
+
+  const colonySize = 1
+  colonyData = new Int8Array(agentCount * colonySize)
+
+  for (let i = 0; i < agentCount * colonySize; i += colonySize) {
+    // 0 or 1, for now
+    colonyData[i] = getRandomInt(0, 2)
   }
 
   gl.bindBuffer( gl.ARRAY_BUFFER, buffer1 )
-
   gl.bufferData( 
     gl.ARRAY_BUFFER, 
     buffer, 
@@ -156,8 +171,10 @@ function makeSimulationBuffer() {
   )
 
   gl.bindBuffer( gl.ARRAY_BUFFER, buffer2 )
+  gl.bufferData( gl.ARRAY_BUFFER, agentCount*FLOAT_BYTES*agentSize, gl.DYNAMIC_COPY )
 
-  gl.bufferData( gl.ARRAY_BUFFER, agentCount*24, gl.DYNAMIC_COPY )
+  gl.bindBuffer(gl.ARRAY_BUFFER, colonyBuffer)
+  gl.bufferData(gl.ARRAY_BUFFER, colonyData, gl.STATIC_DRAW)
 
   gl.enable(gl.BLEND);
   gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
@@ -170,13 +187,15 @@ function makeSimulationUniforms() {
     
   // get position attribute location in shader
   simulationPosition = gl.getAttribLocation( simulationProgram, 'a_pos' )
-  //simulationId       = gl.getAttribLocation( simulationProgram, 'a_id' )
+  simulationId       = gl.getAttribLocation( simulationProgram, 'a_id' )
 
-  gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 24,0 )
-  //gl.vertexAttribPointer( simulationId, 2, gl.FLOAT, false, 24, 16)
-
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffer2)
+  gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 0,0 )
   gl.enableVertexAttribArray( simulationPosition )
-  //gl.enableVertexAttribArray( simulationId )
+
+  gl.bindBuffer(gl.ARRAY_BUFFER, colonyBuffer)
+  gl.vertexAttribIPointer( simulationId, 1, gl.BYTE, 0, 0)
+  gl.enableVertexAttribArray(simulationId)
 
   let uN = gl.getUniformLocation(simulationProgram, "n");
   gl.uniform1i(uN, 4);
@@ -390,8 +409,11 @@ function render() {
 
   // bind our array buffer of molds
   gl.bindBuffer( gl.ARRAY_BUFFER, buffer1 )
-  gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 24, 0 )
-  //gl.vertexAttribPointer( simulationId, 2, gl.FLOAT, false, 24, 16 )
+  gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 16, 0 )
+
+  gl.bindBuffer(gl.ARRAY_BUFFER, colonyBuffer)
+  gl.vertexAttribIPointer( simulationId, 1, gl.BYTE, 0, 0 )
+
   gl.bindBufferBase( gl.TRANSFORM_FEEDBACK_BUFFER, 0, buffer2 )
   
   gl.beginTransformFeedback( gl.POINTS )  
