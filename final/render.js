@@ -155,12 +155,13 @@ function makeSimulationBuffer() {
     buffer[i+3] = Math.random()
   }
 
-  const colonySize = 1
+  const colonySize = 2
   colonyData = new Int8Array(agentCount * colonySize)
 
   for (let i = 0; i < agentCount * colonySize; i += colonySize) {
     // 0 or 1, for now
     colonyData[i] = getRandomInt(0, 2)
+    colonyData[i+1] = 0
   }
 
   gl.bindBuffer( gl.ARRAY_BUFFER, buffer1 )

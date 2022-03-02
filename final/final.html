@@ -87,14 +87,17 @@
     // dir - heading of agent
     // angle - direction to sense, in radians
     // distance - distance to sense
-    float readSensor( vec2 pos, vec2 dir, float angle, vec2 distance, int colonyId ) {
+    vec2 readSensor( vec2 pos, vec2 dir, float angle, vec2 distance) {
       vec2 newangle  = rotate( dir, angle  );
       vec2 offset = newangle * distance;
-      return texture( uSampler, pos + offset )[colonyId];
+      return texture( uSampler, pos + offset ).xy;
     } 
 
     void main() {
       colony_id = a_id;
+
+      int my_id = a_id.x;
+      int other_id = (a_id.x + 1) % 2;
 
       float rot = PI / float(n);
 
@@ -107,29 +110,60 @@
       // normalize our {-1,1} vertex coordinates to {0,1} for texture lookups
       vec2 pos = (1. + a_pos.xy) / 2.;
 
+      int sensor_lookup = (my_id == 1) ? other_id : my_id;
+
       // read sensor information at different angles
-      float left     = readSensor( pos, a_pos.zw, -rot + PI/5.*sin(pulse_freq * float(frame) / 60.), sensorDistance, a_id.x );
-      float forward  = readSensor( pos, a_pos.zw, 0.,    sensorDistance, a_id.x );
-      float right    = readSensor( pos, a_pos.zw, rot - PI/5.*cos(pulse_freq * float(frame) / 60.),  sensorDistance, a_id.x );
+      vec2 left     = readSensor( pos, a_pos.zw, -rot + PI/5.*sin(pulse_freq * float(frame) / 60.), sensorDistance );
+      vec2 forward  = readSensor( pos, a_pos.zw, 0.,    sensorDistance );
+      vec2 right    = readSensor( pos, a_pos.zw, rot - PI/5.*cos(pulse_freq * float(frame) / 60.),  sensorDistance );
       
       // initialize feedback transform output
       o_vpos = a_pos;
 
       left = left;
-      // if most chemical is found to left... 
-      if( left > forward && left > right ) {
-        // rotate left and store in .zw
-        o_vpos.zw = rotate( o_vpos.zw, -rot );
-      }else if( right > left && right > forward ) { // chemical is to the right
-        o_vpos.zw = rotate( o_vpos.zw, rot );
-      }else if ( right == left ) { // randomly pick a direction
-        float rand = fract(sin(a_pos.x)*100000.0);
-        if( rand > .5 ) {
-          o_vpos.zw = rotate( o_vpos.zw, rot );
-        }else{
+      // if most chemical is found to left...
+      if(a_id.x == 0) {
+        if( left[my_id] > forward[my_id] && left[my_id] > right[my_id] ) {
+          // rotate left and store in .zw
           o_vpos.zw = rotate( o_vpos.zw, -rot );
-        }
-      } // else keep going the same direction, no change required
+        }else if( right[my_id] > left[my_id] && right[my_id] > forward[my_id] ) { // chemical is to the right
+          o_vpos.zw = rotate( o_vpos.zw, rot );
+        }else if ( right[my_id] == left[my_id] ) { // randomly pick a direction
+          float rand = fract(sin(a_pos.x)*100000.0);
+          if( rand > .5 ) {
+            o_vpos.zw = rotate( o_vpos.zw, rot );
+          }else{
+            o_vpos.zw = rotate( o_vpos.zw, -rot );
+          }
+        } // else keep going the same direction, no change required
+      } else {
+        if( left[other_id] > forward[other_id] && left[other_id] > right[other_id] ) {
+          o_vpos.zw = rotate( o_vpos.zw, rot*0.3 );
+        }else if( right[other_id] > left[other_id] && right[other_id] > forward[other_id] ) { // chemical is to the right
+          o_vpos.zw = rotate( o_vpos.zw, -rot*0.3 );
+        }else if ( right[other_id] == left[other_id] ) { // randomly pick a direction
+          float rand = fract(sin(a_pos.x)*100000.0);
+          if( rand > .5 ) {
+            o_vpos.zw = rotate( o_vpos.zw, rot*0.3 );
+          }else{
+            o_vpos.zw = rotate( o_vpos.zw, -rot*0.3 );
+          }
+        } // else keep going the same direction, no change required
+
+        if( left[my_id] > forward[my_id] && left[my_id] > right[my_id] ) {
+          // rotate left and store in .zw
+          o_vpos.zw = rotate( o_vpos.zw, -rot*1.25 );
+        }else if( right[my_id] > left[my_id] && right[my_id] > forward[my_id] ) { // chemical is to the right
+          o_vpos.zw = rotate( o_vpos.zw, rot*1.25 );
+        }else if ( right[my_id] == left[my_id] ) { // randomly pick a direction
+          float rand = fract(sin(a_pos.x)*100000.0);
+          if( rand > .5 ) {
+            o_vpos.zw = rotate( o_vpos.zw, rot*1.25 );
+          }else{
+            o_vpos.zw = rotate( o_vpos.zw, -rot*1.25 );
+          }
+        } // else keep going the same direction, no change required
+      }
       
       // move our agent in our new direction by one pixel
       o_vpos.xy += o_vpos.zw * pixel;
