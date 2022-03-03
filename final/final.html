@@ -93,8 +93,20 @@
     vec2 readSensor( vec2 pos, vec2 dir, float angle, vec2 distance) {
       vec2 newangle  = rotate( dir, angle  );
       vec2 offset = newangle * distance;
-      return texture( uSampler, pos + offset ).xy;
-    } 
+
+      vec2 simTex = texture( uSampler, pos + offset ).xy;
+      return simTex;
+    }
+
+    vec2 readCamera( vec2 pos, vec2 dir, float angle, vec2 distance) {
+      vec2 newangle  = rotate( dir, angle  );
+      vec2 offset = newangle * distance;
+
+      vec2 camPos = pos + offset;
+      camPos.y = 1. - camPos.y;
+      vec2 camTex = texture( camSampler, camPos).xy;
+      return camTex;
+    }
 
     void main() {
       colony_id = a_id;
@@ -115,10 +127,18 @@
 
       int sensor_lookup = (my_id == 1) ? other_id : my_id;
 
-      // read sensor information at different angles
-      vec2 left     = readSensor( pos, a_pos.zw, -rot + PI/5.*sin(pulse_freq * float(frame) / 60.), sensorDistance );
-      vec2 forward  = readSensor( pos, a_pos.zw, 0.,    sensorDistance );
-      vec2 right    = readSensor( pos, a_pos.zw, rot - PI/5.*cos(pulse_freq * float(frame) / 60.),  sensorDistance );
+      vec2 left, forward, right;
+
+      if(a_id.x == 0) {
+        // read sensor information at different angles
+        left     = readCamera( pos, a_pos.zw, -rot + PI/5.*sin(pulse_freq * float(frame) / 60.), sensorDistance );
+        forward  = readCamera( pos, a_pos.zw, 0.,    sensorDistance );
+        right    = readCamera( pos, a_pos.zw, rot - PI/5.*cos(pulse_freq * float(frame) / 60.),  sensorDistance );
+      } else {
+        left     = readSensor( pos, a_pos.zw, -rot + PI/5.*sin(pulse_freq * float(frame) / 60.), sensorDistance );
+        forward  = readSensor( pos, a_pos.zw, 0.,    sensorDistance );
+        right    = readSensor( pos, a_pos.zw, rot - PI/5.*cos(pulse_freq * float(frame) / 60.),  sensorDistance );
+      }
       
       // initialize feedback transform output
       o_vpos = a_pos;

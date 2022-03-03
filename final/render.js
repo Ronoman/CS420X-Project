@@ -436,7 +436,7 @@ function render() {
   gl.activeTexture( gl.TEXTURE0 )
   // read from textureBack in our shaders
   gl.bindTexture( gl.TEXTURE_2D, textureBack )
-  gl.uniform1i( texId, 1 )
+  gl.uniform1i( texId, 0 )
 
   gl.activeTexture( gl.TEXTURE1 )
   gl.bindTexture( gl.TEXTURE_2D, videoTex)
@@ -459,7 +459,7 @@ function render() {
 
   gl.bindBufferBase( gl.TRANSFORM_FEEDBACK_BUFFER, 0, buffer2 )
   
-  gl.beginTransformFeedback( gl.POINTS )  
+  gl.beginTransformFeedback( gl.POINTS )
   gl.drawArrays( gl.POINTS, 0, agentCount )
   gl.endTransformFeedback()
 	/* END Agent-based simulation */
