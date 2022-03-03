@@ -2,11 +2,14 @@
 
 // "global" variables
 var gl, time, uRes, transformFeedback, 
-    buffer1, buffer2, colonyBuffer, simulationPosition, simulationId, copyPosition,
-    textureBack, textureFront, framebuffer,
+    buffer1, buffer2, colonyBuffer, simulationPosition, simulationId, texId, camId, copyPosition,
+    textureBack, textureFront, videoTex, framebuffer,
     copyProgram, simulationProgram, quad,
     dimensions = { width:null, height:null },
-    pane, PARAMS, PRESETS
+    pane, PARAMS, PRESETS, video
+
+const CAM_WIDTH = 512
+const CAM_HEIGHT = 422
 
 window.onload = function() {
   const canvas = document.getElementById( 'gl' )
@@ -24,7 +27,7 @@ window.onload = function() {
   makeDecayDiffusePhase()
   makeTextures()
   makeControls()
-  render()
+  video = getVideo()
 }
 
 function makeCopyPhase() {
@@ -189,6 +192,8 @@ function makeSimulationUniforms() {
   // get position attribute location in shader
   simulationPosition = gl.getAttribLocation( simulationProgram, 'a_pos' )
   simulationId       = gl.getAttribLocation( simulationProgram, 'a_id' )
+  texId              = gl.getUniformLocation( simulationProgram, 'uSampler' )
+  camId              = gl.getUniformLocation( simulationProgram, 'camSampler' )
 
   gl.bindBuffer(gl.ARRAY_BUFFER, buffer2)
   gl.vertexAttribPointer( simulationPosition, 4, gl.FLOAT, false, 0,0 )
@@ -276,6 +281,14 @@ function makeTextures() {
   gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST )
   gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST )
   gl.texImage2D( gl.TEXTURE_2D, 0, gl.RGBA, dimensions.width, dimensions.height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null )
+
+  videoTex = gl.createTexture()
+  gl.bindTexture( gl.TEXTURE_2D, videoTex )
+  gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE )
+  gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE )
+  gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST )
+  gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST )
+  gl.texImage2D( gl.TEXTURE_2D, 0, gl.RGBA, CAM_WIDTH, CAM_HEIGHT, 0, gl.RGBA, gl.UNSIGNED_BYTE, null )
 
   // Create a framebuffer and attach the texture.
   framebuffer = gl.createFramebuffer()
@@ -387,6 +400,22 @@ function makeControls() {
   })
 }
 
+function getVideo() {
+  const video = document.createElement('video');
+
+  // request video stream
+  navigator.mediaDevices.getUserMedia({
+    video:true
+  }).then( stream => { 
+    // this block happens when the video stream has been successfully requested
+    video.srcObject = stream
+    video.play()
+    render()
+  }) 
+    
+  return video
+}
+
 function render() {
   window.requestAnimationFrame( render )
 
@@ -407,6 +436,19 @@ function render() {
   gl.activeTexture( gl.TEXTURE0 )
   // read from textureBack in our shaders
   gl.bindTexture( gl.TEXTURE_2D, textureBack )
+  gl.uniform1i( texId, 1 )
+
+  gl.activeTexture( gl.TEXTURE1 )
+  gl.bindTexture( gl.TEXTURE_2D, videoTex)
+
+  gl.uniform1i( camId, 1 )
+  gl.texImage2D(
+    gl.TEXTURE_2D,
+    0,
+    gl.RGBA, gl.RGBA,
+    gl.UNSIGNED_BYTE,
+    video
+  )
 
   // bind our array buffer of molds
   gl.bindBuffer( gl.ARRAY_BUFFER, buffer1 )
