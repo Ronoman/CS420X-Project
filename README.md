@@ -25,3 +25,13 @@
 [Repo](p4/)
 
 [Explanation](p4/writeup.md)
+
+# Final project
+
+[Project](https://ronoman.github.io/CS420X-Project/final/final.html)
+
+[Repo](final/)
+
+[Video](https://www.youtube.com/watch?v=wTvWUlLLQ4Q)
+
+[Writeup](final/writeup.md)
